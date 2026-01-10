@@ -1,0 +1,248 @@
+#version: '3.8'
+
+services:
+  # Service Discovery - Eureka Server
+  server-eureka:
+    image: steeltoeoss/eureka-server
+    container_name: server-eureka
+    ports:
+      - "8761:8761"
+    environment:
+      JAVA_OPTS: "-Xmx256m -Xss512k"
+    networks:
+      - microservices-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8761"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Message Broker - RabbitMQ
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: rabbitmq
+    ports:
+      - "5672:5672" # AMQP protocol
+      - "15672:15672" # Management UI
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: password
+    networks:
+      - microservices-network
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "check_port_connectivity"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Service anggota dengan H2 Database
+  anggota-service:
+    build: ./anggota
+    container_name: anggota-service
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://server-eureka:8761/eureka/
+      SPRING_RABBITMQ_HOST: rabbitmq
+      SPRING_RABBITMQ_PORT: 5672
+      SPRING_RABBITMQ_USERNAME: admin
+      SPRING_RABBITMQ_PASSWORD: password
+
+      # H2 Database Configuration
+      SPRING_DATASOURCE_URL: jdbc:h2:file:/app/data/anggota;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE
+      SPRING_DATASOURCE_DRIVER_CLASS_NAME: org.h2.Driver
+      SPRING_DATASOURCE_USERNAME: sa
+      SPRING_DATASOURCE_PASSWORD: password
+
+      # H2 Console
+      SPRING_H2_CONSOLE_ENABLED: "true"
+      SPRING_H2_CONSOLE_PATH: /h2-console
+
+      # JPA Configuration
+      SPRING_JPA_DATABASE_PLATFORM: org.hibernate.dialect.H2Dialect
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_SHOW_SQL: "true"
+
+      SERVER_PORT: 8081
+    volumes:
+      - anggota_data:/data
+    depends_on:
+      - server-eureka
+      - rabbitmq
+    networks:
+      - microservices-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8081/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Service buku dengan H2 Database
+  buku-service:
+    build: ./buku
+    container_name: buku-service
+    ports:
+      - "8082:8082"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://server-eureka:8761/eureka/
+      SPRING_RABBITMQ_HOST: rabbitmq
+      SPRING_RABBITMQ_PORT: 5672
+      SPRING_RABBITMQ_USERNAME: admin
+      SPRING_RABBITMQ_PASSWORD: password
+
+      # H2 Database Configuration
+      SPRING_DATASOURCE_URL: jdbc:h2:file:/app/data/buku;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE
+      SPRING_DATASOURCE_DRIVER_CLASS_NAME: org.h2.Driver
+      SPRING_DATASOURCE_USERNAME: sa
+      SPRING_DATASOURCE_PASSWORD: password
+
+      # H2 Console
+      SPRING_H2_CONSOLE_ENABLED: "true"
+      SPRING_H2_CONSOLE_PATH: /h2-console
+
+      # JPA Configuration
+      SPRING_JPA_DATABASE_PLATFORM: org.hibernate.dialect.H2Dialect
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_SHOW_SQL: "true"
+
+      SERVER_PORT: 8082
+    volumes:
+      - buku_data:/data
+    depends_on:
+      - server-eureka
+      - rabbitmq
+    networks:
+      - microservices-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8082/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Service peminjaman dengan H2 Database
+  peminjaman-service:
+    build: ./peminjaman
+    container_name: peminjaman-service
+    ports:
+      - "8083:8083"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://server-eureka:8761/eureka/
+      SPRING_RABBITMQ_HOST: rabbitmq
+      SPRING_RABBITMQ_PORT: 5672
+      SPRING_RABBITMQ_USERNAME: admin
+      SPRING_RABBITMQ_PASSWORD: password
+
+      # H2 Database Configuration
+      SPRING_DATASOURCE_URL: jdbc:h2:file:/app/data/peminjaman;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE
+      SPRING_DATASOURCE_DRIVER_CLASS_NAME: org.h2.Driver
+      SPRING_DATASOURCE_USERNAME: sa
+      SPRING_DATASOURCE_PASSWORD: password
+
+      # H2 Console
+      SPRING_H2_CONSOLE_ENABLED: "true"
+      SPRING_H2_CONSOLE_PATH: /h2-console
+
+      # JPA Configuration
+      SPRING_JPA_DATABASE_PLATFORM: org.hibernate.dialect.H2Dialect
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_SHOW_SQL: "true"
+
+      # Service URLs
+      ANGGOTA_SERVICE_URL: http://anggota-service:8081
+      BUKU_SERVICE_URL: http://buku-service:8082
+      SERVER_PORT: 8083
+    volumes:
+      - peminjaman_data:/data
+    depends_on:
+      - server-eureka
+      - rabbitmq
+      - anggota-service
+      - buku-service
+    networks:
+      - microservices-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8083/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Service pengembalian dengan H2 Database
+  pengembalian-service:
+    build: ./pengembalian
+    container_name: pengembalian-service
+    ports:
+      - "8084:8084"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://server-eureka:8761/eureka/
+      SPRING_RABBITMQ_HOST: rabbitmq
+      SPRING_RABBITMQ_PORT: 5672
+      SPRING_RABBITMQ_USERNAME: admin
+      SPRING_RABBITMQ_PASSWORD: password
+
+      # H2 Database Configuration
+      SPRING_DATASOURCE_URL: jdbc:h2:file:/app/data/pengembalian;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE
+      SPRING_DATASOURCE_DRIVER_CLASS_NAME: org.h2.Driver
+      SPRING_DATASOURCE_USERNAME: sa
+      SPRING_DATASOURCE_PASSWORD: password
+
+      # H2 Console
+      SPRING_H2_CONSOLE_ENABLED: "true"
+      SPRING_H2_CONSOLE_PATH: /h2-console
+
+      # JPA Configuration
+      SPRING_JPA_DATABASE_PLATFORM: org.hibernate.dialect.H2Dialect
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_SHOW_SQL: "true"
+
+      # Service URLs
+      ANGGOTA_SERVICE_URL: http://anggota-service:8081
+      BUKU_SERVICE_URL: http://buku-service:8082
+      PEMINJAMAN_SERVICE_URL: http://peminjaman-service:8083
+      SERVER_PORT: 8084
+    volumes:
+      - pengembalian_data:/data
+    depends_on:
+      - server-eureka
+      - rabbitmq
+      - anggota-service
+      - buku-service
+    networks:
+      - microservices-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8084/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # API Gateway (Opsional)
+  api-gateway:
+    build: ./api-gateway
+    container_name: api-gateway
+    ports:
+      - "9090:9000"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://server-eureka:8761/eureka/
+      SERVER_PORT: 9000
+    depends_on:
+      - server-eureka
+      - anggota-service
+      - buku-service
+      - peminjaman-service
+      - pengembalian-service
+    networks:
+      - microservices-network
+
+volumes:
+  anggota_data:
+  buku_data:
+  peminjaman_data:
+  pengembalian_data:
+
+networks:
+  microservices-network:
+    driver: bridge
