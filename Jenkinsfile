@@ -18,7 +18,7 @@ pipeline {
             steps {
                 echo 'Building Anggota Service...'
                 dir('anggota') {
-                    bat 'mvn clean package -DskipTests'
+                    sh 'mvn clean package -DskipTests'
                 }
             }
         }
@@ -27,7 +27,7 @@ pipeline {
             steps {
                 echo 'Testing Anggota Service...'
                 dir('anggota') {
-                    bat 'mvn test'
+                    sh 'mvn test'
                 }
             }
         }
@@ -36,7 +36,7 @@ pipeline {
             steps {
                 echo 'Building Buku Service...'
                 dir('buku') {
-                    bat 'mvn clean package -DskipTests'
+                    sh 'mvn clean package -DskipTests'
                 }
             }
         }
@@ -45,7 +45,7 @@ pipeline {
             steps {
                 echo 'Testing Buku Service...'
                 dir('buku') {
-                    bat 'mvn test'
+                    sh 'mvn test'
                 }
             }
         }
@@ -54,7 +54,7 @@ pipeline {
             steps {
                 echo 'Building Peminjaman Service...'
                 dir('peminjaman') {
-                    bat 'mvn clean package -DskipTests'
+                    sh 'mvn clean package -DskipTests'
                 }
             }
         }
@@ -63,7 +63,7 @@ pipeline {
             steps {
                 echo 'Testing Peminjaman Service...'
                 dir('peminjaman') {
-                    bat 'mvn test'
+                    sh 'mvn test'
                 }
             }
         }
@@ -72,13 +72,7 @@ pipeline {
             steps {
                 echo 'Building Pengembalian Service...'
                 dir('pengembalian') {
-                                    script {
-                    if (isUnix()) {
-                        sh 'mvn clean package -DskipTests'
-                    } else {
-                        bat 'mvn clean package -DskipTests'
-                    }
-                }
+                    sh 'mvn clean package -DskipTests'
                 }
             }
         }
@@ -87,13 +81,7 @@ pipeline {
             steps {
                 echo 'Testing Pengembalian Service...'
                 dir('pengembalian') {
-                                    script {
-                    if (isUnix()) {
-                        sh 'mvn test'
-                    } else {
-                        bat 'mvn test'
-                    }
-                }
+                    sh 'mvn test'
                 }
             }
         }
