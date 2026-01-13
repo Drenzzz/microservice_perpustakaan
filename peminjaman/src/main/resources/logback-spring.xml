@@ -25,10 +25,21 @@
         </encoder>
     </appender>
 
+    <!-- Logstash TCP Appender -->
+    <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <destination>logstash:5000</destination>
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+             <includeMdcKeyName>correlationId</includeMdcKeyName>
+             <includeMdcKeyName>serviceName</includeMdcKeyName>
+             <customFields>{"service":"${serviceName}"}</customFields>
+        </encoder>
+    </appender>
+
     <!-- Profile: ELK / Production - JSON output -->
     <springProfile name="elk,production">
         <root level="INFO">
             <appender-ref ref="JSON_CONSOLE"/>
+            <appender-ref ref="LOGSTASH"/>
         </root>
         <logger name="com.naufal" level="DEBUG"/>
     </springProfile>
