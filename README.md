@@ -1,4 +1,4 @@
-# Microservices Perpustakaan 
+# Microservices Perpustakaan
 
 Sistem **Event-Driven Microservices** yang tangguh untuk mengelola operasional perpustakaan (Anggota, Buku, Peminjaman, Pengembalian). Proyek ini mendemonstrasikan pola arsitektur Java modern termasuk **CQRS**, **Pelacakan Terdistribusi**, **Pencatatan Terpusat (ELK)**, dan **Pemantauan (Prometheus/Grafana)**.
 
@@ -26,7 +26,7 @@ Sistem ini menggunakan arsitektur terpisah di mana layanan berkomunikasi secara 
 
 | Kategori               | Teknologi                       | Keterangan                                                      |
 | :--------------------- | :------------------------------ | :-------------------------------------------------------------- |
-| **Bahasa & Framework** | Java 17, Spring Boot 3.3.x      | Basis pengembangan aplikasi backend.                            |
+| **Bahasa & Framework** | Java 21, Spring Boot 3.3.x      | Basis pengembangan aplikasi backend.                            |
 | **Service Discovery**  | Spring Cloud Eureka (Netflix)   | Pendaftaran dan penemuan layanan dinamis.                       |
 | **API Gateway**        | Spring Cloud Gateway            | Routing trafik dan titik masuk tunggal.                         |
 | **Message Broker**     | RabbitMQ                        | Komunikasi asinkron antar layanan.                              |
@@ -65,7 +65,7 @@ Berikut adalah peta port untuk mengakses setiap layanan, baik dari dalam contain
 Pastikan komputer Anda telah terinstal:
 
 1.  **Docker Desktop** (dengan WSL2 aktif pada Windows).
-2.  **Java JDK 17** (jika ingin menjalankan build manual tanpa Docker).
+2.  **Java JDK 21** (jika ingin menjalankan build manual tanpa Docker).
 3.  **Git** untuk kloning repositori.
 
 ### Langkah Menjalankan Aplikasi
