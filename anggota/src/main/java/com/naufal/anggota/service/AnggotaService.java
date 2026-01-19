@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import com.naufal.anggota.model.AnggotaModel;
 import com.naufal.anggota.repository.AnggotaRepository;
 
+import lombok.extern.java.Log;
+
 @Service
 public class AnggotaService {
     @Autowired
@@ -24,7 +26,7 @@ public class AnggotaService {
     }
 
     public AnggotaModel createAnggota(AnggotaModel anggota) {
-        System.out.println("berhasil entri anggota");
+        Log.info("berhasil entri anggota");
         return anggotaRepository.save(anggota);
     }
 
