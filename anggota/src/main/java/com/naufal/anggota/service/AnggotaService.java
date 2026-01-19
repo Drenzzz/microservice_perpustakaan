@@ -19,10 +19,12 @@ public class AnggotaService {
     }
 
     public AnggotaModel getAnggotaById(Long id) {
+
         return anggotaRepository.findById(id).orElse(null);
     }
 
     public AnggotaModel createAnggota(AnggotaModel anggota) {
+        System.out.println("berhasil entri anggota");
         return anggotaRepository.save(anggota);
     }
 
