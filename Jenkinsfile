@@ -94,17 +94,24 @@ pipeline {
             steps {
                 echo 'Deploying services...'
                 
-                // Show recent changes
-                sh 'git log --oneline -n 5'
-                
                 // Notify Logstash - Deployment Start
-                sh 'echo \'{"service": "jenkins-pipeline", "message": "Deployment Started", "event": "deployment_start"}\' | nc -w 1 localhost 5000 || true'
+                sh(script: '''
+                    bash -c "echo '{\\"service\\": \\"jenkins-pipeline\\", \\"message\\": \\"Deployment Started\\", \\"event\\": \\"deployment_start\\"}' > /dev/tcp/localhost/5000" || true
+                ''', returnStatus: true)
                 
-                // Deploy using Docker Compose
-                sh 'docker-compose up -d --build'
+                // Cleanup existing containers explicitly to avoid conflicts
+                sh(script: 'docker-compose down --remove-orphans', returnStatus: true)
+                
+                // Force remove common containers if they still exist (handling the Conflict error)
+                sh(script: 'docker rm -f server-eureka api-gateway anggota-service buku-service peminjaman-service pengembalian-service || true', returnStatus: true)
+                
+                // Deploy
+                sh 'docker-compose up -d --build --force-recreate'
                 
                 // Notify Logstash - Deployment Finish
-                sh 'echo \'{"service": "jenkins-pipeline", "message": "Deployment Finished", "event": "deployment_finish"}\' | nc -w 1 localhost 5000 || true'
+                sh(script: '''
+                    bash -c "echo '{\\"service\\": \\"jenkins-pipeline\\", \\"message\\": \\"Deployment Finished\\", \\"event\\": \\"deployment_finish\\"}' > /dev/tcp/localhost/5000" || true
+                ''', returnStatus: true)
             }
         }
     }

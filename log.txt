@@ -1,1 +1,1631 @@
-=-
+Started by an SCM change
+Obtained Jenkinsfile from git https://github.com/Drenzzz/microservice_perpustakaan
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins
+ in /home/pal/.jenkins/workspace/microservice-perpustakaan
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+The recommended git tool is: git
+No credentials specified
+ > git rev-parse --resolve-git-dir /home/pal/.jenkins/workspace/microservice-perpustakaan/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/Drenzzz/microservice_perpustakaan # timeout=10
+Fetching upstream changes from https://github.com/Drenzzz/microservice_perpustakaan
+ > git --version # timeout=10
+ > git --version # 'git version 2.52.0'
+ > git fetch --tags --force --progress -- https://github.com/Drenzzz/microservice_perpustakaan +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/linux^{commit} # timeout=10
+Checking out Revision 850708bf298abfc0cf5a24ec1599a9c9743d9c45 (refs/remotes/origin/linux)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 850708bf298abfc0cf5a24ec1599a9c9743d9c45 # timeout=10
+Commit message: "fix jenkins syntax error"
+ > git rev-list --no-walk 8057f15c9a54505449cd83609e550d4b673fd892 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Tool Install)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] echo
+Cloning repository...
+[Pipeline] checkout
+The recommended git tool is: git
+No credentials specified
+ > git rev-parse --resolve-git-dir /home/pal/.jenkins/workspace/microservice-perpustakaan/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/Drenzzz/microservice_perpustakaan # timeout=10
+Fetching upstream changes from https://github.com/Drenzzz/microservice_perpustakaan
+ > git --version # timeout=10
+ > git --version # 'git version 2.52.0'
+ > git fetch --tags --force --progress -- https://github.com/Drenzzz/microservice_perpustakaan +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/linux^{commit} # timeout=10
+Checking out Revision 850708bf298abfc0cf5a24ec1599a9c9743d9c45 (refs/remotes/origin/linux)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 850708bf298abfc0cf5a24ec1599a9c9743d9c45 # timeout=10
+Commit message: "fix jenkins syntax error"
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build Anggota Service)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] echo
+Building Anggota Service...
+[Pipeline] dir
+Running in /home/pal/.jenkins/workspace/microservice-perpustakaan/anggota
+[Pipeline] {
+[Pipeline] sh
++ mvn clean package -DskipTests
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------------< com.naufal:anggota >-------------------------
+[INFO] Building anggota 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.3.2:clean (default-clean) @ anggota ---
+[INFO] Deleting /home/pal/.jenkins/workspace/microservice-perpustakaan/anggota/target
+[INFO] 
+[INFO] --- git-commit-id:8.0.2:revision (default) @ anggota ---
+[INFO] dotGitDirectory '/home/pal/.jenkins/workspace/microservice-perpustakaan/.git'
+[INFO] Collected git.build.user.name with value Drenzzz
+[INFO] Collected git.build.user.email with value realdrenzzz@gmail.com
+[INFO] Using environment variable based branch name. GIT_BRANCH = origin/linux
+[INFO] Collected git.branch with value origin/linux
+[INFO] Collected git.commit.id.describe with value 850708b
+[INFO] Collected git.commit.id.describe-short with value 850708b
+[INFO] Collected git.commit.id with value 850708bf298abfc0cf5a24ec1599a9c9743d9c45
+[INFO] Collected git.commit.id.abbrev with value 850708b
+[INFO] Collected git.dirty with value false
+[INFO] Collected git.commit.user.name with value Drenzzz
+[INFO] Collected git.commit.user.email with value realdrenzzz@gmail.com
+[INFO] Collected git.commit.message.full with value fix jenkins syntax error
+[INFO] Collected git.commit.message.short with value fix jenkins syntax error
+[INFO] Collected git.commit.time with value 2026-01-19T22:38:33+07:00
+[INFO] Collected git.commit.author.time with value 2026-01-19T22:38:33+07:00
+[INFO] Collected git.commit.committer.time with value 2026-01-19T22:38:33+07:00
+[INFO] Collected git.remote.origin.url with value https://github.com/Drenzzz/microservice_perpustakaan
+[INFO] Collected git.tags with value 
+[INFO] Collected git.tag with value 
+[INFO] Collected git.closest.tag.name with value 
+[INFO] Collected git.closest.tag.commit.count with value 
+[INFO] Collected git.total.commit.count with value 24
+[INFO] Collected git.local.branch.ahead with value NO_REMOTE
+[INFO] Collected git.local.branch.behind with value NO_REMOTE
+[INFO] Collected git.build.time with value 2026-01-19T22:39:19+07:00
+[INFO] Collected git.build.version with value 0.0.1-SNAPSHOT
+[INFO] Collected git.build.host with value drenzzz
+[INFO] Collected git.build.number with value 14
+[INFO] including property 'git.tags' in results
+[INFO] including property 'git.build.version' in results
+[INFO] including property 'git.branch' in results
+[INFO] including property 'git.build.host' in results
+[INFO] including property 'git.build.number' in results
+[INFO] including property 'git.commit.id' in results
+[INFO] including property 'git.commit.user.email' in results
+[INFO] including property 'git.local.branch.behind' in results
+[INFO] including property 'git.commit.author.time' in results
+[INFO] including property 'git.build.user.name' in results
+[INFO] including property 'git.dirty' in results
+[INFO] including property 'git.closest.tag.commit.count' in results
+[INFO] including property 'git.commit.user.name' in results
+[INFO] including property 'git.commit.id.abbrev' in results
+[INFO] including property 'git.commit.id.describe-short' in results
+[INFO] including property 'git.total.commit.count' in results
+[INFO] including property 'git.commit.id.describe' in results
+[INFO] including property 'git.build.user.email' in results
+[INFO] including property 'git.commit.message.short' in results
+[INFO] including property 'git.commit.committer.time' in results
+[INFO] including property 'git.tag' in results
+[INFO] including property 'git.closest.tag.name' in results
+[INFO] including property 'git.local.branch.ahead' in results
+[INFO] including property 'git.commit.time' in results
+[INFO] including property 'git.build.time' in results
+[INFO] including property 'git.commit.message.full' in results
+[INFO] including property 'git.remote.origin.url' in results
+[INFO] Writing properties file [/home/pal/.jenkins/workspace/microservice-perpustakaan/anggota/target/classes/git.properties] (for project anggota)...
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ anggota ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ anggota ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 6 source files with javac [debug parameters release 21] to target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ anggota ---
+[INFO] Copying 1 resource from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ anggota ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 1 source file with javac [debug parameters release 21] to target/test-classes
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ anggota ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.4.2:jar (default-jar) @ anggota ---
+[INFO] Building jar: /home/pal/.jenkins/workspace/microservice-perpustakaan/anggota/target/anggota-0.0.1-SNAPSHOT.jar
+[INFO] 
+[INFO] --- spring-boot:3.3.5:repackage (repackage) @ anggota ---
+[INFO] Replacing main artifact /home/pal/.jenkins/workspace/microservice-perpustakaan/anggota/target/anggota-0.0.1-SNAPSHOT.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /home/pal/.jenkins/workspace/microservice-perpustakaan/anggota/target/anggota-0.0.1-SNAPSHOT.jar.original
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.541 s
+[INFO] Finished at: 2026-01-19T22:39:21+07:00
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Test Anggota Service)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] echo
+Testing Anggota Service...
+[Pipeline] dir
+Running in /home/pal/.jenkins/workspace/microservice-perpustakaan/anggota
+[Pipeline] {
+[Pipeline] sh
++ mvn test
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------------< com.naufal:anggota >-------------------------
+[INFO] Building anggota 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- git-commit-id:8.0.2:revision (default) @ anggota ---
+[INFO] dotGitDirectory '/home/pal/.jenkins/workspace/microservice-perpustakaan/.git'
+[INFO] Collected git.build.user.name with value Drenzzz
+[INFO] Collected git.build.user.email with value realdrenzzz@gmail.com
+[INFO] Using environment variable based branch name. GIT_BRANCH = origin/linux
+[INFO] Collected git.branch with value origin/linux
+[INFO] Collected git.commit.id.describe with value 850708b
+[INFO] Collected git.commit.id.describe-short with value 850708b
+[INFO] Collected git.commit.id with value 850708bf298abfc0cf5a24ec1599a9c9743d9c45
+[INFO] Collected git.commit.id.abbrev with value 850708b
+[INFO] Collected git.dirty with value false
+[INFO] Collected git.commit.user.name with value Drenzzz
+[INFO] Collected git.commit.user.email with value realdrenzzz@gmail.com
+[INFO] Collected git.commit.message.full with value fix jenkins syntax error
+[INFO] Collected git.commit.message.short with value fix jenkins syntax error
+[INFO] Collected git.commit.time with value 2026-01-19T22:38:33+07:00
+[INFO] Collected git.commit.author.time with value 2026-01-19T22:38:33+07:00
+[INFO] Collected git.commit.committer.time with value 2026-01-19T22:38:33+07:00
+[INFO] Collected git.remote.origin.url with value https://github.com/Drenzzz/microservice_perpustakaan
+[INFO] Collected git.tags with value 
+[INFO] Collected git.tag with value 
+[INFO] Collected git.closest.tag.name with value 
+[INFO] Collected git.closest.tag.commit.count with value 
+[INFO] Collected git.total.commit.count with value 24
+[INFO] Collected git.local.branch.ahead with value NO_REMOTE
+[INFO] Collected git.local.branch.behind with value NO_REMOTE
+[INFO] Collected git.build.time with value 2026-01-19T22:39:24+07:00
+[INFO] Collected git.build.version with value 0.0.1-SNAPSHOT
+[INFO] Collected git.build.host with value drenzzz
+[INFO] Collected git.build.number with value 14
+[INFO] including property 'git.tags' in results
+[INFO] including property 'git.build.version' in results
+[INFO] including property 'git.branch' in results
+[INFO] including property 'git.build.host' in results
+[INFO] including property 'git.build.number' in results
+[INFO] including property 'git.commit.id' in results
+[INFO] including property 'git.commit.user.email' in results
+[INFO] including property 'git.local.branch.behind' in results
+[INFO] including property 'git.commit.author.time' in results
+[INFO] including property 'git.build.user.name' in results
+[INFO] including property 'git.dirty' in results
+[INFO] including property 'git.closest.tag.commit.count' in results
+[INFO] including property 'git.commit.user.name' in results
+[INFO] including property 'git.commit.id.abbrev' in results
+[INFO] including property 'git.commit.id.describe-short' in results
+[INFO] including property 'git.total.commit.count' in results
+[INFO] including property 'git.commit.id.describe' in results
+[INFO] including property 'git.build.user.email' in results
+[INFO] including property 'git.commit.message.short' in results
+[INFO] including property 'git.commit.committer.time' in results
+[INFO] including property 'git.tag' in results
+[INFO] including property 'git.closest.tag.name' in results
+[INFO] including property 'git.local.branch.ahead' in results
+[INFO] including property 'git.commit.time' in results
+[INFO] including property 'git.build.time' in results
+[INFO] including property 'git.commit.message.full' in results
+[INFO] including property 'git.remote.origin.url' in results
+[INFO] Reading existing properties file [/home/pal/.jenkins/workspace/microservice-perpustakaan/anggota/target/classes/git.properties] (for project anggota)...
+[INFO] Properties file [/home/pal/.jenkins/workspace/microservice-perpustakaan/anggota/target/classes/git.properties] is up-to-date (for module anggota)...
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ anggota ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ anggota ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ anggota ---
+[INFO] Copying 1 resource from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ anggota ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ anggota ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.naufal.anggota.AnggotaApplicationTests
+22:39:25.545 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.naufal.anggota.AnggotaApplicationTests]: AnggotaApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+22:39:25.598 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.naufal.anggota.AnggotaApplication for test class com.naufal.anggota.AnggotaApplicationTests
+22:39:25.676 [main] INFO org.springframework.boot.devtools.restart.RestartApplicationListener -- Restart disabled due to context in which it is running
+22:39:26,844 |-INFO in ch.qos.logback.core.joran.util.ConfigurationWatchListUtil@7c9b78e3 - Adding [jar:file:/home/pal/.m2/repository/org/springframework/boot/spring-boot/3.3.5/spring-boot-3.3.5.jar!/org/springframework/boot/logging/logback/defaults.xml] to configuration watch list.
+22:39:26,844 |-INFO in ConfigurationWatchList(mainURL=file:/home/pal/.jenkins/workspace/microservice-perpustakaan/anggota/target/classes/logback-spring.xml, fileWatchList={/home/pal/.jenkins/workspace/microservice-perpustakaan/anggota/target/classes/logback-spring.xml}, urlWatchList=[}) - Cannot watch [jar:file:/home/pal/.m2/repository/org/springframework/boot/spring-boot/3.3.5/spring-boot-3.3.5.jar!/org/springframework/boot/logging/logback/defaults.xml] as its protocol is not one of file, http or https.
+22:39:26,846 |-INFO in ch.qos.logback.core.model.processor.ConversionRuleModelHandler - registering conversion word applicationName with class [org.springframework.boot.logging.logback.ApplicationNameConverter]
+22:39:26,846 |-INFO in ch.qos.logback.core.model.processor.ConversionRuleModelHandler - registering conversion word clr with class [org.springframework.boot.logging.logback.ColorConverter]
+22:39:26,846 |-INFO in ch.qos.logback.core.model.processor.ConversionRuleModelHandler - registering conversion word correlationId with class [org.springframework.boot.logging.logback.CorrelationIdConverter]
+22:39:26,846 |-INFO in ch.qos.logback.core.model.processor.ConversionRuleModelHandler - registering conversion word wex with class [org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter]
+22:39:26,846 |-INFO in ch.qos.logback.core.model.processor.ConversionRuleModelHandler - registering conversion word wEx with class [org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter]
+22:39:26,847 |-INFO in ch.qos.logback.core.model.processor.ModelInterpretationContext@736ac09a - value "%clr(%d{yyyy-MM-dd'T'HH:mm:ss.SSSXXX}){faint} %clr(%5p) %clr(86353){magenta} %clr(---){faint} %clr(%applicationName[%15.15t]){faint} %clr(%correlationId){faint}%clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%wEx" substituted for "${CONSOLE_LOG_PATTERN:-%clr(%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd'T'HH:mm:ss.SSSXXX}}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr(%applicationName[%15.15t]){faint} %clr(${LOG_CORRELATION_PATTERN:-}){faint}%clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"
+22:39:26,847 |-INFO in ch.qos.logback.core.model.processor.ModelInterpretationContext@736ac09a - value "UTF-8" substituted for "${CONSOLE_LOG_CHARSET:-${file.encoding:-UTF-8}}"
+22:39:26,847 |-INFO in ch.qos.logback.core.model.processor.ModelInterpretationContext@736ac09a - value "TRACE" substituted for "${CONSOLE_LOG_THRESHOLD:-TRACE}"
+22:39:26,847 |-INFO in ch.qos.logback.core.model.processor.ModelInterpretationContext@736ac09a - value "%d{yyyy-MM-dd'T'HH:mm:ss.SSSXXX} %5p 86353 --- %applicationName[%t] %correlationId%-40.40logger{39} : %m%n%wEx" substituted for "${FILE_LOG_PATTERN:-%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd'T'HH:mm:ss.SSSXXX}} ${LOG_LEVEL_PATTERN:-%5p} ${PID:- } --- %applicationName[%t] ${LOG_CORRELATION_PATTERN:-}%-40.40logger{39} : %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"
+22:39:26,847 |-INFO in ch.qos.logback.core.model.processor.ModelInterpretationContext@736ac09a - value "UTF-8" substituted for "${FILE_LOG_CHARSET:-${file.encoding:-UTF-8}}"
+22:39:26,847 |-INFO in ch.qos.logback.core.model.processor.ModelInterpretationContext@736ac09a - value "TRACE" substituted for "${FILE_LOG_THRESHOLD:-TRACE}"
+22:39:26,849 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.apache.catalina.startup.DigesterFactory] to ERROR
+22:39:26,849 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6ecd665 - Propagating ERROR level on Logger[org.apache.catalina.startup.DigesterFactory] onto the JUL framework
+22:39:26,849 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.apache.catalina.util.LifecycleBase] to ERROR
+22:39:26,849 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6ecd665 - Propagating ERROR level on Logger[org.apache.catalina.util.LifecycleBase] onto the JUL framework
+22:39:26,849 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.apache.coyote.http11.Http11NioProtocol] to WARN
+22:39:26,849 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6ecd665 - Propagating WARN level on Logger[org.apache.coyote.http11.Http11NioProtocol] onto the JUL framework
+22:39:26,849 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.apache.sshd.common.util.SecurityUtils] to WARN
+22:39:26,849 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6ecd665 - Propagating WARN level on Logger[org.apache.sshd.common.util.SecurityUtils] onto the JUL framework
+22:39:26,849 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.apache.tomcat.util.net.NioSelectorPool] to WARN
+22:39:26,849 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6ecd665 - Propagating WARN level on Logger[org.apache.tomcat.util.net.NioSelectorPool] onto the JUL framework
+22:39:26,849 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.eclipse.jetty.util.component.AbstractLifeCycle] to ERROR
+22:39:26,849 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6ecd665 - Propagating ERROR level on Logger[org.eclipse.jetty.util.component.AbstractLifeCycle] onto the JUL framework
+22:39:26,850 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.hibernate.validator.internal.util.Version] to WARN
+22:39:26,850 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6ecd665 - Propagating WARN level on Logger[org.hibernate.validator.internal.util.Version] onto the JUL framework
+22:39:26,850 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.springframework.boot.actuate.endpoint.jmx] to WARN
+22:39:26,850 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6ecd665 - Propagating WARN level on Logger[org.springframework.boot.actuate.endpoint.jmx] onto the JUL framework
+22:39:26,850 |-WARN in ch.qos.logback.core.model.processor.AppenderModelHandler - Appender named [JSON_CONSOLE] not referenced. Skipping further processing.
+22:39:26,850 |-INFO in ch.qos.logback.core.model.processor.AppenderModelHandler - Processing appender named [CONSOLE]
+22:39:26,850 |-INFO in ch.qos.logback.core.model.processor.AppenderModelHandler - About to instantiate appender of type [ch.qos.logback.core.ConsoleAppender]
+22:39:26,852 |-INFO in ch.qos.logback.core.model.processor.ImplicitModelHandler - Assuming default type [ch.qos.logback.classic.encoder.PatternLayoutEncoder] for [encoder] property
+22:39:26,858 |-WARN in ch.qos.logback.core.model.processor.AppenderModelHandler - Appender named [LOGSTASH] not referenced. Skipping further processing.
+22:39:26,858 |-INFO in ch.qos.logback.classic.model.processor.RootLoggerModelHandler - Setting level of ROOT logger to INFO
+22:39:26,858 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6ecd665 - Propagating INFO level on Logger[ROOT] onto the JUL framework
+22:39:26,858 |-INFO in ch.qos.logback.core.model.processor.AppenderRefModelHandler - Attaching appender named [CONSOLE] to Logger[ROOT]
+22:39:26,858 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [com.naufal] to DEBUG
+22:39:26,858 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6ecd665 - Propagating DEBUG level on Logger[com.naufal] onto the JUL framework
+22:39:26,858 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.springframework] to WARN
+22:39:26,858 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6ecd665 - Propagating WARN level on Logger[org.springframework] onto the JUL framework
+22:39:26,858 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.hibernate] to WARN
+22:39:26,858 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6ecd665 - Propagating WARN level on Logger[org.hibernate] onto the JUL framework
+22:39:26,858 |-INFO in ch.qos.logback.core.model.processor.DefaultProcessor@45394b31 - End of configuration.
+22:39:26,858 |-INFO in org.springframework.boot.logging.logback.SpringBootJoranConfigurator@1ec7d8b3 - Registering current configuration as safe fallback point
+
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.5)
+
+22:39:26.904 INFO  [,] c.n.anggota.AnggotaApplicationTests - Starting AnggotaApplicationTests using Java 21.0.9 with PID 86353 (started by pal in /home/pal/.jenkins/workspace/microservice-perpustakaan/anggota)
+22:39:26.904 DEBUG [,] c.n.anggota.AnggotaApplicationTests - Running with Spring Boot v3.3.5, Spring v6.1.14
+22:39:26.905 INFO  [,] c.n.anggota.AnggotaApplicationTests - No active profile set, falling back to 1 default profile: "default"
+22:39:27.895 WARN  [,] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+22:39:27.898 WARN  [,] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+22:39:28.315 INFO  [,] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+22:39:28.400 INFO  [,] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+22:39:28.401 INFO  [,] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+22:39:28.413 WARN  [,] org.hibernate.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+22:39:29.088 WARN  [,] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+22:39:30.950 WARN  [,] o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+22:39:30.993 INFO  [,] c.n.anggota.AnggotaApplicationTests - Started AnggotaApplicationTests in 5.325 seconds (process running for 5.883)
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/home/pal/.m2/repository/net/bytebuddy/byte-buddy-agent/1.14.19/byte-buddy-agent-1.14.19.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.933 s -- in com.naufal.anggota.AnggotaApplicationTests
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  8.249 s
+[INFO] Finished at: 2026-01-19T22:39:31+07:00
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build Buku Service)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] echo
+Building Buku Service...
+[Pipeline] dir
+Running in /home/pal/.jenkins/workspace/microservice-perpustakaan/buku
+[Pipeline] {
+[Pipeline] sh
++ mvn clean package -DskipTests
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------------------< com.naufal:buku >---------------------------
+[INFO] Building buku 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.3.2:clean (default-clean) @ buku ---
+[INFO] Deleting /home/pal/.jenkins/workspace/microservice-perpustakaan/buku/target
+[INFO] 
+[INFO] --- git-commit-id:8.0.2:revision (default) @ buku ---
+[INFO] dotGitDirectory '/home/pal/.jenkins/workspace/microservice-perpustakaan/.git'
+[INFO] Collected git.build.user.name with value Drenzzz
+[INFO] Collected git.build.user.email with value realdrenzzz@gmail.com
+[INFO] Using environment variable based branch name. GIT_BRANCH = origin/linux
+[INFO] Collected git.branch with value origin/linux
+[INFO] Collected git.commit.id.describe with value 850708b
+[INFO] Collected git.commit.id.describe-short with value 850708b
+[INFO] Collected git.commit.id with value 850708bf298abfc0cf5a24ec1599a9c9743d9c45
+[INFO] Collected git.commit.id.abbrev with value 850708b
+[INFO] Collected git.dirty with value false
+[INFO] Collected git.commit.user.name with value Drenzzz
+[INFO] Collected git.commit.user.email with value realdrenzzz@gmail.com
+[INFO] Collected git.commit.message.full with value fix jenkins syntax error
+[INFO] Collected git.commit.message.short with value fix jenkins syntax error
+[INFO] Collected git.commit.time with value 2026-01-19T22:38:33+07:00
+[INFO] Collected git.commit.author.time with value 2026-01-19T22:38:33+07:00
+[INFO] Collected git.commit.committer.time with value 2026-01-19T22:38:33+07:00
+[INFO] Collected git.remote.origin.url with value https://github.com/Drenzzz/microservice_perpustakaan
+[INFO] Collected git.tags with value 
+[INFO] Collected git.tag with value 
+[INFO] Collected git.closest.tag.name with value 
+[INFO] Collected git.closest.tag.commit.count with value 
+[INFO] Collected git.total.commit.count with value 24
+[INFO] Collected git.local.branch.ahead with value NO_REMOTE
+[INFO] Collected git.local.branch.behind with value NO_REMOTE
+[INFO] Collected git.build.time with value 2026-01-19T22:39:34+07:00
+[INFO] Collected git.build.version with value 0.0.1-SNAPSHOT
+[INFO] Collected git.build.host with value drenzzz
+[INFO] Collected git.build.number with value 14
+[INFO] including property 'git.tags' in results
+[INFO] including property 'git.build.version' in results
+[INFO] including property 'git.branch' in results
+[INFO] including property 'git.build.host' in results
+[INFO] including property 'git.build.number' in results
+[INFO] including property 'git.commit.id' in results
+[INFO] including property 'git.commit.user.email' in results
+[INFO] including property 'git.local.branch.behind' in results
+[INFO] including property 'git.commit.author.time' in results
+[INFO] including property 'git.build.user.name' in results
+[INFO] including property 'git.dirty' in results
+[INFO] including property 'git.closest.tag.commit.count' in results
+[INFO] including property 'git.commit.user.name' in results
+[INFO] including property 'git.commit.id.abbrev' in results
+[INFO] including property 'git.commit.id.describe-short' in results
+[INFO] including property 'git.total.commit.count' in results
+[INFO] including property 'git.commit.id.describe' in results
+[INFO] including property 'git.build.user.email' in results
+[INFO] including property 'git.commit.message.short' in results
+[INFO] including property 'git.commit.committer.time' in results
+[INFO] including property 'git.tag' in results
+[INFO] including property 'git.closest.tag.name' in results
+[INFO] including property 'git.local.branch.ahead' in results
+[INFO] including property 'git.commit.time' in results
+[INFO] including property 'git.build.time' in results
+[INFO] including property 'git.commit.message.full' in results
+[INFO] including property 'git.remote.origin.url' in results
+[INFO] Writing properties file [/home/pal/.jenkins/workspace/microservice-perpustakaan/buku/target/classes/git.properties] (for project buku)...
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ buku ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ buku ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 6 source files with javac [debug parameters release 21] to target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ buku ---
+[INFO] Copying 1 resource from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ buku ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 1 source file with javac [debug parameters release 21] to target/test-classes
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ buku ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.4.2:jar (default-jar) @ buku ---
+[INFO] Building jar: /home/pal/.jenkins/workspace/microservice-perpustakaan/buku/target/buku-0.0.1-SNAPSHOT.jar
+[INFO] 
+[INFO] --- spring-boot:3.3.5:repackage (repackage) @ buku ---
+[INFO] Replacing main artifact /home/pal/.jenkins/workspace/microservice-perpustakaan/buku/target/buku-0.0.1-SNAPSHOT.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /home/pal/.jenkins/workspace/microservice-perpustakaan/buku/target/buku-0.0.1-SNAPSHOT.jar.original
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.332 s
+[INFO] Finished at: 2026-01-19T22:39:36+07:00
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Test Buku Service)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] echo
+Testing Buku Service...
+[Pipeline] dir
+Running in /home/pal/.jenkins/workspace/microservice-perpustakaan/buku
+[Pipeline] {
+[Pipeline] sh
++ mvn test
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------------------< com.naufal:buku >---------------------------
+[INFO] Building buku 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- git-commit-id:8.0.2:revision (default) @ buku ---
+[INFO] dotGitDirectory '/home/pal/.jenkins/workspace/microservice-perpustakaan/.git'
+[INFO] Collected git.build.user.name with value Drenzzz
+[INFO] Collected git.build.user.email with value realdrenzzz@gmail.com
+[INFO] Using environment variable based branch name. GIT_BRANCH = origin/linux
+[INFO] Collected git.branch with value origin/linux
+[INFO] Collected git.commit.id.describe with value 850708b
+[INFO] Collected git.commit.id.describe-short with value 850708b
+[INFO] Collected git.commit.id with value 850708bf298abfc0cf5a24ec1599a9c9743d9c45
+[INFO] Collected git.commit.id.abbrev with value 850708b
+[INFO] Collected git.dirty with value false
+[INFO] Collected git.commit.user.name with value Drenzzz
+[INFO] Collected git.commit.user.email with value realdrenzzz@gmail.com
+[INFO] Collected git.commit.message.full with value fix jenkins syntax error
+[INFO] Collected git.commit.message.short with value fix jenkins syntax error
+[INFO] Collected git.commit.time with value 2026-01-19T22:38:33+07:00
+[INFO] Collected git.commit.author.time with value 2026-01-19T22:38:33+07:00
+[INFO] Collected git.commit.committer.time with value 2026-01-19T22:38:33+07:00
+[INFO] Collected git.remote.origin.url with value https://github.com/Drenzzz/microservice_perpustakaan
+[INFO] Collected git.tags with value 
+[INFO] Collected git.tag with value 
+[INFO] Collected git.closest.tag.name with value 
+[INFO] Collected git.closest.tag.commit.count with value 
+[INFO] Collected git.total.commit.count with value 24
+[INFO] Collected git.local.branch.ahead with value NO_REMOTE
+[INFO] Collected git.local.branch.behind with value NO_REMOTE
+[INFO] Collected git.build.time with value 2026-01-19T22:39:39+07:00
+[INFO] Collected git.build.version with value 0.0.1-SNAPSHOT
+[INFO] Collected git.build.host with value drenzzz
+[INFO] Collected git.build.number with value 14
+[INFO] including property 'git.tags' in results
+[INFO] including property 'git.build.version' in results
+[INFO] including property 'git.branch' in results
+[INFO] including property 'git.build.host' in results
+[INFO] including property 'git.build.number' in results
+[INFO] including property 'git.commit.id' in results
+[INFO] including property 'git.commit.user.email' in results
+[INFO] including property 'git.local.branch.behind' in results
+[INFO] including property 'git.commit.author.time' in results
+[INFO] including property 'git.build.user.name' in results
+[INFO] including property 'git.dirty' in results
+[INFO] including property 'git.closest.tag.commit.count' in results
+[INFO] including property 'git.commit.user.name' in results
+[INFO] including property 'git.commit.id.abbrev' in results
+[INFO] including property 'git.commit.id.describe-short' in results
+[INFO] including property 'git.total.commit.count' in results
+[INFO] including property 'git.commit.id.describe' in results
+[INFO] including property 'git.build.user.email' in results
+[INFO] including property 'git.commit.message.short' in results
+[INFO] including property 'git.commit.committer.time' in results
+[INFO] including property 'git.tag' in results
+[INFO] including property 'git.closest.tag.name' in results
+[INFO] including property 'git.local.branch.ahead' in results
+[INFO] including property 'git.commit.time' in results
+[INFO] including property 'git.build.time' in results
+[INFO] including property 'git.commit.message.full' in results
+[INFO] including property 'git.remote.origin.url' in results
+[INFO] Reading existing properties file [/home/pal/.jenkins/workspace/microservice-perpustakaan/buku/target/classes/git.properties] (for project buku)...
+[INFO] Properties file [/home/pal/.jenkins/workspace/microservice-perpustakaan/buku/target/classes/git.properties] is up-to-date (for module buku)...
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ buku ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ buku ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ buku ---
+[INFO] Copying 1 resource from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ buku ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ buku ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.naufal.buku.BukuApplicationTests
+22:39:40.365 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.naufal.buku.BukuApplicationTests]: BukuApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+22:39:40.423 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.naufal.buku.BukuApplication for test class com.naufal.buku.BukuApplicationTests
+22:39:40.504 [main] INFO org.springframework.boot.devtools.restart.RestartApplicationListener -- Restart disabled due to context in which it is running
+22:39:41,699 |-INFO in ch.qos.logback.core.joran.util.ConfigurationWatchListUtil@7c9b78e3 - Adding [jar:file:/home/pal/.m2/repository/org/springframework/boot/spring-boot/3.3.5/spring-boot-3.3.5.jar!/org/springframework/boot/logging/logback/defaults.xml] to configuration watch list.
+22:39:41,699 |-INFO in ConfigurationWatchList(mainURL=file:/home/pal/.jenkins/workspace/microservice-perpustakaan/buku/target/classes/logback-spring.xml, fileWatchList={/home/pal/.jenkins/workspace/microservice-perpustakaan/buku/target/classes/logback-spring.xml}, urlWatchList=[}) - Cannot watch [jar:file:/home/pal/.m2/repository/org/springframework/boot/spring-boot/3.3.5/spring-boot-3.3.5.jar!/org/springframework/boot/logging/logback/defaults.xml] as its protocol is not one of file, http or https.
+22:39:41,701 |-INFO in ch.qos.logback.core.model.processor.ConversionRuleModelHandler - registering conversion word applicationName with class [org.springframework.boot.logging.logback.ApplicationNameConverter]
+22:39:41,701 |-INFO in ch.qos.logback.core.model.processor.ConversionRuleModelHandler - registering conversion word clr with class [org.springframework.boot.logging.logback.ColorConverter]
+22:39:41,701 |-INFO in ch.qos.logback.core.model.processor.ConversionRuleModelHandler - registering conversion word correlationId with class [org.springframework.boot.logging.logback.CorrelationIdConverter]
+22:39:41,701 |-INFO in ch.qos.logback.core.model.processor.ConversionRuleModelHandler - registering conversion word wex with class [org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter]
+22:39:41,701 |-INFO in ch.qos.logback.core.model.processor.ConversionRuleModelHandler - registering conversion word wEx with class [org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter]
+22:39:41,702 |-INFO in ch.qos.logback.core.model.processor.ModelInterpretationContext@736ac09a - value "%clr(%d{yyyy-MM-dd'T'HH:mm:ss.SSSXXX}){faint} %clr(%5p) %clr(86777){magenta} %clr(---){faint} %clr(%applicationName[%15.15t]){faint} %clr(%correlationId){faint}%clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%wEx" substituted for "${CONSOLE_LOG_PATTERN:-%clr(%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd'T'HH:mm:ss.SSSXXX}}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr(%applicationName[%15.15t]){faint} %clr(${LOG_CORRELATION_PATTERN:-}){faint}%clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"
+22:39:41,702 |-INFO in ch.qos.logback.core.model.processor.ModelInterpretationContext@736ac09a - value "UTF-8" substituted for "${CONSOLE_LOG_CHARSET:-${file.encoding:-UTF-8}}"
+22:39:41,702 |-INFO in ch.qos.logback.core.model.processor.ModelInterpretationContext@736ac09a - value "TRACE" substituted for "${CONSOLE_LOG_THRESHOLD:-TRACE}"
+22:39:41,702 |-INFO in ch.qos.logback.core.model.processor.ModelInterpretationContext@736ac09a - value "%d{yyyy-MM-dd'T'HH:mm:ss.SSSXXX} %5p 86777 --- %applicationName[%t] %correlationId%-40.40logger{39} : %m%n%wEx" substituted for "${FILE_LOG_PATTERN:-%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd'T'HH:mm:ss.SSSXXX}} ${LOG_LEVEL_PATTERN:-%5p} ${PID:- } --- %applicationName[%t] ${LOG_CORRELATION_PATTERN:-}%-40.40logger{39} : %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"
+22:39:41,702 |-INFO in ch.qos.logback.core.model.processor.ModelInterpretationContext@736ac09a - value "UTF-8" substituted for "${FILE_LOG_CHARSET:-${file.encoding:-UTF-8}}"
+22:39:41,702 |-INFO in ch.qos.logback.core.model.processor.ModelInterpretationContext@736ac09a - value "TRACE" substituted for "${FILE_LOG_THRESHOLD:-TRACE}"
+22:39:41,704 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.apache.catalina.startup.DigesterFactory] to ERROR
+22:39:41,704 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6ecd665 - Propagating ERROR level on Logger[org.apache.catalina.startup.DigesterFactory] onto the JUL framework
+22:39:41,704 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.apache.catalina.util.LifecycleBase] to ERROR
+22:39:41,704 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6ecd665 - Propagating ERROR level on Logger[org.apache.catalina.util.LifecycleBase] onto the JUL framework
+22:39:41,704 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.apache.coyote.http11.Http11NioProtocol] to WARN
+22:39:41,704 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6ecd665 - Propagating WARN level on Logger[org.apache.coyote.http11.Http11NioProtocol] onto the JUL framework
+22:39:41,704 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.apache.sshd.common.util.SecurityUtils] to WARN
+22:39:41,704 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6ecd665 - Propagating WARN level on Logger[org.apache.sshd.common.util.SecurityUtils] onto the JUL framework
+22:39:41,704 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.apache.tomcat.util.net.NioSelectorPool] to WARN
+22:39:41,704 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6ecd665 - Propagating WARN level on Logger[org.apache.tomcat.util.net.NioSelectorPool] onto the JUL framework
+22:39:41,704 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.eclipse.jetty.util.component.AbstractLifeCycle] to ERROR
+22:39:41,704 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6ecd665 - Propagating ERROR level on Logger[org.eclipse.jetty.util.component.AbstractLifeCycle] onto the JUL framework
+22:39:41,704 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.hibernate.validator.internal.util.Version] to WARN
+22:39:41,704 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6ecd665 - Propagating WARN level on Logger[org.hibernate.validator.internal.util.Version] onto the JUL framework
+22:39:41,704 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.springframework.boot.actuate.endpoint.jmx] to WARN
+22:39:41,704 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6ecd665 - Propagating WARN level on Logger[org.springframework.boot.actuate.endpoint.jmx] onto the JUL framework
+22:39:41,705 |-WARN in ch.qos.logback.core.model.processor.AppenderModelHandler - Appender named [JSON_CONSOLE] not referenced. Skipping further processing.
+22:39:41,705 |-INFO in ch.qos.logback.core.model.processor.AppenderModelHandler - Processing appender named [CONSOLE]
+22:39:41,705 |-INFO in ch.qos.logback.core.model.processor.AppenderModelHandler - About to instantiate appender of type [ch.qos.logback.core.ConsoleAppender]
+22:39:41,706 |-INFO in ch.qos.logback.core.model.processor.ImplicitModelHandler - Assuming default type [ch.qos.logback.classic.encoder.PatternLayoutEncoder] for [encoder] property
+22:39:41,713 |-INFO in ch.qos.logback.classic.model.processor.RootLoggerModelHandler - Setting level of ROOT logger to INFO
+22:39:41,713 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6ecd665 - Propagating INFO level on Logger[ROOT] onto the JUL framework
+22:39:41,713 |-INFO in ch.qos.logback.core.model.processor.AppenderRefModelHandler - Attaching appender named [CONSOLE] to Logger[ROOT]
+22:39:41,713 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [com.naufal] to DEBUG
+22:39:41,713 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6ecd665 - Propagating DEBUG level on Logger[com.naufal] onto the JUL framework
+22:39:41,713 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.springframework] to WARN
+22:39:41,713 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6ecd665 - Propagating WARN level on Logger[org.springframework] onto the JUL framework
+22:39:41,713 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.hibernate] to WARN
+22:39:41,713 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@6ecd665 - Propagating WARN level on Logger[org.hibernate] onto the JUL framework
+22:39:41,713 |-INFO in ch.qos.logback.core.model.processor.DefaultProcessor@45394b31 - End of configuration.
+22:39:41,713 |-INFO in org.springframework.boot.logging.logback.SpringBootJoranConfigurator@1ec7d8b3 - Registering current configuration as safe fallback point
+
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.5)
+
+22:39:41.755 INFO  [,] c.naufal.buku.BukuApplicationTests - Starting BukuApplicationTests using Java 21.0.9 with PID 86777 (started by pal in /home/pal/.jenkins/workspace/microservice-perpustakaan/buku)
+22:39:41.756 DEBUG [,] c.naufal.buku.BukuApplicationTests - Running with Spring Boot v3.3.5, Spring v6.1.14
+22:39:41.756 INFO  [,] c.naufal.buku.BukuApplicationTests - No active profile set, falling back to 1 default profile: "default"
+22:39:42.842 WARN  [,] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+22:39:42.845 WARN  [,] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+22:39:43.192 INFO  [,] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+22:39:43.294 INFO  [,] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+22:39:43.294 INFO  [,] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+22:39:43.309 WARN  [,] org.hibernate.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+22:39:44.056 WARN  [,] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+22:39:45.900 WARN  [,] o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+22:39:45.942 INFO  [,] c.naufal.buku.BukuApplicationTests - Started BukuApplicationTests in 5.446 seconds (process running for 6.014)
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/home/pal/.m2/repository/net/bytebuddy/byte-buddy-agent/1.14.19/byte-buddy-agent-1.14.19.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.060 s -- in com.naufal.buku.BukuApplicationTests
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  8.074 s
+[INFO] Finished at: 2026-01-19T22:39:46+07:00
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build Peminjaman Service)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] echo
+Building Peminjaman Service...
+[Pipeline] dir
+Running in /home/pal/.jenkins/workspace/microservice-perpustakaan/peminjaman
+[Pipeline] {
+[Pipeline] sh
++ mvn clean package -DskipTests
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------------< com.naufal:peminjaman >------------------------
+[INFO] Building peminjaman 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.3.2:clean (default-clean) @ peminjaman ---
+[INFO] Deleting /home/pal/.jenkins/workspace/microservice-perpustakaan/peminjaman/target
+[INFO] 
+[INFO] --- git-commit-id:8.0.2:revision (default) @ peminjaman ---
+[INFO] dotGitDirectory '/home/pal/.jenkins/workspace/microservice-perpustakaan/.git'
+[INFO] Collected git.build.user.name with value Drenzzz
+[INFO] Collected git.build.user.email with value realdrenzzz@gmail.com
+[INFO] Using environment variable based branch name. GIT_BRANCH = origin/linux
+[INFO] Collected git.branch with value origin/linux
+[INFO] Collected git.commit.id.describe with value 850708b
+[INFO] Collected git.commit.id.describe-short with value 850708b
+[INFO] Collected git.commit.id with value 850708bf298abfc0cf5a24ec1599a9c9743d9c45
+[INFO] Collected git.commit.id.abbrev with value 850708b
+[INFO] Collected git.dirty with value false
+[INFO] Collected git.commit.user.name with value Drenzzz
+[INFO] Collected git.commit.user.email with value realdrenzzz@gmail.com
+[INFO] Collected git.commit.message.full with value fix jenkins syntax error
+[INFO] Collected git.commit.message.short with value fix jenkins syntax error
+[INFO] Collected git.commit.time with value 2026-01-19T22:38:33+07:00
+[INFO] Collected git.commit.author.time with value 2026-01-19T22:38:33+07:00
+[INFO] Collected git.commit.committer.time with value 2026-01-19T22:38:33+07:00
+[INFO] Collected git.remote.origin.url with value https://github.com/Drenzzz/microservice_perpustakaan
+[INFO] Collected git.tags with value 
+[INFO] Collected git.tag with value 
+[INFO] Collected git.closest.tag.name with value 
+[INFO] Collected git.closest.tag.commit.count with value 
+[INFO] Collected git.total.commit.count with value 24
+[INFO] Collected git.local.branch.ahead with value NO_REMOTE
+[INFO] Collected git.local.branch.behind with value NO_REMOTE
+[INFO] Collected git.build.time with value 2026-01-19T22:39:49+07:00
+[INFO] Collected git.build.version with value 0.0.1-SNAPSHOT
+[INFO] Collected git.build.host with value drenzzz
+[INFO] Collected git.build.number with value 14
+[INFO] including property 'git.tags' in results
+[INFO] including property 'git.build.version' in results
+[INFO] including property 'git.branch' in results
+[INFO] including property 'git.build.host' in results
+[INFO] including property 'git.build.number' in results
+[INFO] including property 'git.commit.id' in results
+[INFO] including property 'git.commit.user.email' in results
+[INFO] including property 'git.local.branch.behind' in results
+[INFO] including property 'git.commit.author.time' in results
+[INFO] including property 'git.build.user.name' in results
+[INFO] including property 'git.dirty' in results
+[INFO] including property 'git.closest.tag.commit.count' in results
+[INFO] including property 'git.commit.user.name' in results
+[INFO] including property 'git.commit.id.abbrev' in results
+[INFO] including property 'git.commit.id.describe-short' in results
+[INFO] including property 'git.total.commit.count' in results
+[INFO] including property 'git.commit.id.describe' in results
+[INFO] including property 'git.build.user.email' in results
+[INFO] including property 'git.commit.message.short' in results
+[INFO] including property 'git.commit.committer.time' in results
+[INFO] including property 'git.tag' in results
+[INFO] including property 'git.closest.tag.name' in results
+[INFO] including property 'git.local.branch.ahead' in results
+[INFO] including property 'git.commit.time' in results
+[INFO] including property 'git.build.time' in results
+[INFO] including property 'git.commit.message.full' in results
+[INFO] including property 'git.remote.origin.url' in results
+[INFO] Writing properties file [/home/pal/.jenkins/workspace/microservice-perpustakaan/peminjaman/target/classes/git.properties] (for project peminjaman)...
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ peminjaman ---
+[INFO] Copying 2 resources from src/main/resources to target/classes
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ peminjaman ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 30 source files with javac [debug parameters release 21] to target/classes
+[INFO] /home/pal/.jenkins/workspace/microservice-perpustakaan/peminjaman/src/main/java/com/naufal/peminjaman/service/RabbitMQConsumerService.java: /home/pal/.jenkins/workspace/microservice-perpustakaan/peminjaman/src/main/java/com/naufal/peminjaman/service/RabbitMQConsumerService.java uses unchecked or unsafe operations.
+[INFO] /home/pal/.jenkins/workspace/microservice-perpustakaan/peminjaman/src/main/java/com/naufal/peminjaman/service/RabbitMQConsumerService.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ peminjaman ---
+[INFO] Copying 1 resource from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ peminjaman ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 1 source file with javac [debug parameters release 21] to target/test-classes
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ peminjaman ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.4.2:jar (default-jar) @ peminjaman ---
+[INFO] Building jar: /home/pal/.jenkins/workspace/microservice-perpustakaan/peminjaman/target/peminjaman-0.0.1-SNAPSHOT.jar
+[INFO] 
+[INFO] --- spring-boot:3.3.5:repackage (repackage) @ peminjaman ---
+[INFO] Replacing main artifact /home/pal/.jenkins/workspace/microservice-perpustakaan/peminjaman/target/peminjaman-0.0.1-SNAPSHOT.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /home/pal/.jenkins/workspace/microservice-perpustakaan/peminjaman/target/peminjaman-0.0.1-SNAPSHOT.jar.original
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.491 s
+[INFO] Finished at: 2026-01-19T22:39:51+07:00
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Test Peminjaman Service)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] echo
+Testing Peminjaman Service...
+[Pipeline] dir
+Running in /home/pal/.jenkins/workspace/microservice-perpustakaan/peminjaman
+[Pipeline] {
+[Pipeline] sh
++ mvn test
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------------< com.naufal:peminjaman >------------------------
+[INFO] Building peminjaman 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- git-commit-id:8.0.2:revision (default) @ peminjaman ---
+[INFO] dotGitDirectory '/home/pal/.jenkins/workspace/microservice-perpustakaan/.git'
+[INFO] Collected git.build.user.name with value Drenzzz
+[INFO] Collected git.build.user.email with value realdrenzzz@gmail.com
+[INFO] Using environment variable based branch name. GIT_BRANCH = origin/linux
+[INFO] Collected git.branch with value origin/linux
+[INFO] Collected git.commit.id.describe with value 850708b
+[INFO] Collected git.commit.id.describe-short with value 850708b
+[INFO] Collected git.commit.id with value 850708bf298abfc0cf5a24ec1599a9c9743d9c45
+[INFO] Collected git.commit.id.abbrev with value 850708b
+[INFO] Collected git.dirty with value false
+[INFO] Collected git.commit.user.name with value Drenzzz
+[INFO] Collected git.commit.user.email with value realdrenzzz@gmail.com
+[INFO] Collected git.commit.message.full with value fix jenkins syntax error
+[INFO] Collected git.commit.message.short with value fix jenkins syntax error
+[INFO] Collected git.commit.time with value 2026-01-19T22:38:33+07:00
+[INFO] Collected git.commit.author.time with value 2026-01-19T22:38:33+07:00
+[INFO] Collected git.commit.committer.time with value 2026-01-19T22:38:33+07:00
+[INFO] Collected git.remote.origin.url with value https://github.com/Drenzzz/microservice_perpustakaan
+[INFO] Collected git.tags with value 
+[INFO] Collected git.tag with value 
+[INFO] Collected git.closest.tag.name with value 
+[INFO] Collected git.closest.tag.commit.count with value 
+[INFO] Collected git.total.commit.count with value 24
+[INFO] Collected git.local.branch.ahead with value NO_REMOTE
+[INFO] Collected git.local.branch.behind with value NO_REMOTE
+[INFO] Collected git.build.time with value 2026-01-19T22:39:54+07:00
+[INFO] Collected git.build.version with value 0.0.1-SNAPSHOT
+[INFO] Collected git.build.host with value drenzzz
+[INFO] Collected git.build.number with value 14
+[INFO] including property 'git.tags' in results
+[INFO] including property 'git.build.version' in results
+[INFO] including property 'git.branch' in results
+[INFO] including property 'git.build.host' in results
+[INFO] including property 'git.build.number' in results
+[INFO] including property 'git.commit.id' in results
+[INFO] including property 'git.commit.user.email' in results
+[INFO] including property 'git.local.branch.behind' in results
+[INFO] including property 'git.commit.author.time' in results
+[INFO] including property 'git.build.user.name' in results
+[INFO] including property 'git.dirty' in results
+[INFO] including property 'git.closest.tag.commit.count' in results
+[INFO] including property 'git.commit.user.name' in results
+[INFO] including property 'git.commit.id.abbrev' in results
+[INFO] including property 'git.commit.id.describe-short' in results
+[INFO] including property 'git.total.commit.count' in results
+[INFO] including property 'git.commit.id.describe' in results
+[INFO] including property 'git.build.user.email' in results
+[INFO] including property 'git.commit.message.short' in results
+[INFO] including property 'git.commit.committer.time' in results
+[INFO] including property 'git.tag' in results
+[INFO] including property 'git.closest.tag.name' in results
+[INFO] including property 'git.local.branch.ahead' in results
+[INFO] including property 'git.commit.time' in results
+[INFO] including property 'git.build.time' in results
+[INFO] including property 'git.commit.message.full' in results
+[INFO] including property 'git.remote.origin.url' in results
+[INFO] Reading existing properties file [/home/pal/.jenkins/workspace/microservice-perpustakaan/peminjaman/target/classes/git.properties] (for project peminjaman)...
+[INFO] Properties file [/home/pal/.jenkins/workspace/microservice-perpustakaan/peminjaman/target/classes/git.properties] is up-to-date (for module peminjaman)...
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ peminjaman ---
+[INFO] Copying 2 resources from src/main/resources to target/classes
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ peminjaman ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ peminjaman ---
+[INFO] Copying 1 resource from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ peminjaman ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ peminjaman ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.naufal.peminjaman.PeminjamanApplicationTests
+22:39:55.539 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.naufal.peminjaman.PeminjamanApplicationTests]: PeminjamanApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+22:39:55.591 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.naufal.peminjaman.PeminjamanApplication for test class com.naufal.peminjaman.PeminjamanApplicationTests
+22:39:55.685 [main] INFO org.springframework.boot.devtools.restart.RestartApplicationListener -- Restart disabled due to context in which it is running
+22:39:56,897 |-INFO in ch.qos.logback.core.joran.util.ConfigurationWatchListUtil@78faea5f - Adding [jar:file:/home/pal/.m2/repository/org/springframework/boot/spring-boot/3.3.5/spring-boot-3.3.5.jar!/org/springframework/boot/logging/logback/defaults.xml] to configuration watch list.
+22:39:56,897 |-INFO in ConfigurationWatchList(mainURL=file:/home/pal/.jenkins/workspace/microservice-perpustakaan/peminjaman/target/classes/logback-spring.xml, fileWatchList={/home/pal/.jenkins/workspace/microservice-perpustakaan/peminjaman/target/classes/logback-spring.xml}, urlWatchList=[}) - Cannot watch [jar:file:/home/pal/.m2/repository/org/springframework/boot/spring-boot/3.3.5/spring-boot-3.3.5.jar!/org/springframework/boot/logging/logback/defaults.xml] as its protocol is not one of file, http or https.
+22:39:56,899 |-INFO in ch.qos.logback.core.model.processor.ConversionRuleModelHandler - registering conversion word applicationName with class [org.springframework.boot.logging.logback.ApplicationNameConverter]
+22:39:56,899 |-INFO in ch.qos.logback.core.model.processor.ConversionRuleModelHandler - registering conversion word clr with class [org.springframework.boot.logging.logback.ColorConverter]
+22:39:56,899 |-INFO in ch.qos.logback.core.model.processor.ConversionRuleModelHandler - registering conversion word correlationId with class [org.springframework.boot.logging.logback.CorrelationIdConverter]
+22:39:56,899 |-INFO in ch.qos.logback.core.model.processor.ConversionRuleModelHandler - registering conversion word wex with class [org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter]
+22:39:56,899 |-INFO in ch.qos.logback.core.model.processor.ConversionRuleModelHandler - registering conversion word wEx with class [org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter]
+22:39:56,900 |-INFO in ch.qos.logback.core.model.processor.ModelInterpretationContext@398474a2 - value "%clr(%d{yyyy-MM-dd'T'HH:mm:ss.SSSXXX}){faint} %clr(%5p [peminjaman,%X{traceId:-},%X{spanId:-}]) %clr(87303){magenta} %clr(---){faint} %clr(%applicationName[%15.15t]){faint} %clr(%correlationId){faint}%clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%wEx" substituted for "${CONSOLE_LOG_PATTERN:-%clr(%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd'T'HH:mm:ss.SSSXXX}}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr(%applicationName[%15.15t]){faint} %clr(${LOG_CORRELATION_PATTERN:-}){faint}%clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"
+22:39:56,900 |-INFO in ch.qos.logback.core.model.processor.ModelInterpretationContext@398474a2 - value "UTF-8" substituted for "${CONSOLE_LOG_CHARSET:-${file.encoding:-UTF-8}}"
+22:39:56,900 |-INFO in ch.qos.logback.core.model.processor.ModelInterpretationContext@398474a2 - value "TRACE" substituted for "${CONSOLE_LOG_THRESHOLD:-TRACE}"
+22:39:56,900 |-INFO in ch.qos.logback.core.model.processor.ModelInterpretationContext@398474a2 - value "%d{yyyy-MM-dd'T'HH:mm:ss.SSSXXX} %5p [peminjaman,%X{traceId:-},%X{spanId:-}] 87303 --- %applicationName[%t] %correlationId%-40.40logger{39} : %m%n%wEx" substituted for "${FILE_LOG_PATTERN:-%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd'T'HH:mm:ss.SSSXXX}} ${LOG_LEVEL_PATTERN:-%5p} ${PID:- } --- %applicationName[%t] ${LOG_CORRELATION_PATTERN:-}%-40.40logger{39} : %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"
+22:39:56,900 |-INFO in ch.qos.logback.core.model.processor.ModelInterpretationContext@398474a2 - value "UTF-8" substituted for "${FILE_LOG_CHARSET:-${file.encoding:-UTF-8}}"
+22:39:56,900 |-INFO in ch.qos.logback.core.model.processor.ModelInterpretationContext@398474a2 - value "TRACE" substituted for "${FILE_LOG_THRESHOLD:-TRACE}"
+22:39:56,902 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.apache.catalina.startup.DigesterFactory] to ERROR
+22:39:56,902 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@61799544 - Propagating ERROR level on Logger[org.apache.catalina.startup.DigesterFactory] onto the JUL framework
+22:39:56,902 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.apache.catalina.util.LifecycleBase] to ERROR
+22:39:56,902 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@61799544 - Propagating ERROR level on Logger[org.apache.catalina.util.LifecycleBase] onto the JUL framework
+22:39:56,902 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.apache.coyote.http11.Http11NioProtocol] to WARN
+22:39:56,902 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@61799544 - Propagating WARN level on Logger[org.apache.coyote.http11.Http11NioProtocol] onto the JUL framework
+22:39:56,902 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.apache.sshd.common.util.SecurityUtils] to WARN
+22:39:56,902 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@61799544 - Propagating WARN level on Logger[org.apache.sshd.common.util.SecurityUtils] onto the JUL framework
+22:39:56,902 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.apache.tomcat.util.net.NioSelectorPool] to WARN
+22:39:56,902 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@61799544 - Propagating WARN level on Logger[org.apache.tomcat.util.net.NioSelectorPool] onto the JUL framework
+22:39:56,902 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.eclipse.jetty.util.component.AbstractLifeCycle] to ERROR
+22:39:56,902 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@61799544 - Propagating ERROR level on Logger[org.eclipse.jetty.util.component.AbstractLifeCycle] onto the JUL framework
+22:39:56,902 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.hibernate.validator.internal.util.Version] to WARN
+22:39:56,902 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@61799544 - Propagating WARN level on Logger[org.hibernate.validator.internal.util.Version] onto the JUL framework
+22:39:56,902 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.springframework.boot.actuate.endpoint.jmx] to WARN
+22:39:56,902 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@61799544 - Propagating WARN level on Logger[org.springframework.boot.actuate.endpoint.jmx] onto the JUL framework
+22:39:56,903 |-WARN in ch.qos.logback.core.model.processor.AppenderModelHandler - Appender named [JSON_CONSOLE] not referenced. Skipping further processing.
+22:39:56,903 |-INFO in ch.qos.logback.core.model.processor.AppenderModelHandler - Processing appender named [CONSOLE]
+22:39:56,903 |-INFO in ch.qos.logback.core.model.processor.AppenderModelHandler - About to instantiate appender of type [ch.qos.logback.core.ConsoleAppender]
+22:39:56,904 |-INFO in ch.qos.logback.core.model.processor.ImplicitModelHandler - Assuming default type [ch.qos.logback.classic.encoder.PatternLayoutEncoder] for [encoder] property
+22:39:56,911 |-WARN in ch.qos.logback.core.model.processor.AppenderModelHandler - Appender named [LOGSTASH] not referenced. Skipping further processing.
+22:39:56,911 |-INFO in ch.qos.logback.classic.model.processor.RootLoggerModelHandler - Setting level of ROOT logger to INFO
+22:39:56,911 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@61799544 - Propagating INFO level on Logger[ROOT] onto the JUL framework
+22:39:56,911 |-INFO in ch.qos.logback.core.model.processor.AppenderRefModelHandler - Attaching appender named [CONSOLE] to Logger[ROOT]
+22:39:56,911 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [com.naufal] to DEBUG
+22:39:56,911 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@61799544 - Propagating DEBUG level on Logger[com.naufal] onto the JUL framework
+22:39:56,911 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.springframework] to WARN
+22:39:56,911 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@61799544 - Propagating WARN level on Logger[org.springframework] onto the JUL framework
+22:39:56,911 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.hibernate] to WARN
+22:39:56,911 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@61799544 - Propagating WARN level on Logger[org.hibernate] onto the JUL framework
+22:39:56,912 |-INFO in ch.qos.logback.core.model.processor.DefaultProcessor@78c1a023 - End of configuration.
+22:39:56,912 |-INFO in org.springframework.boot.logging.logback.SpringBootJoranConfigurator@70abf9b0 - Registering current configuration as safe fallback point
+
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.5)
+
+22:39:56.953 INFO  [,] c.n.p.PeminjamanApplicationTests - Starting PeminjamanApplicationTests using Java 21.0.9 with PID 87303 (started by pal in /home/pal/.jenkins/workspace/microservice-perpustakaan/peminjaman)
+22:39:56.953 DEBUG [,] c.n.p.PeminjamanApplicationTests - Running with Spring Boot v3.3.5, Spring v6.1.14
+22:39:56.954 INFO  [,] c.n.p.PeminjamanApplicationTests - No active profile set, falling back to 1 default profile: "default"
+22:39:58.021 WARN  [,] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+22:39:58.024 WARN  [,] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+22:39:58.404 INFO  [,] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+22:39:58.489 INFO  [,] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+22:39:58.490 INFO  [,] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+22:39:58.502 WARN  [,] org.hibernate.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+22:39:59.708 WARN  [,] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+22:40:00.384 WARN  [,] o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+22:40:00.516 INFO  [,] c.n.p.PeminjamanApplicationTests - Started PeminjamanApplicationTests in 4.838 seconds (process running for 5.395)
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/home/pal/.m2/repository/net/bytebuddy/byte-buddy-agent/1.14.19/byte-buddy-agent-1.14.19.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.464 s -- in com.naufal.peminjaman.PeminjamanApplicationTests
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  8.067 s
+[INFO] Finished at: 2026-01-19T22:40:01+07:00
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build Pengembalian Service)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] echo
+Building Pengembalian Service...
+[Pipeline] dir
+Running in /home/pal/.jenkins/workspace/microservice-perpustakaan/pengembalian
+[Pipeline] {
+[Pipeline] sh
++ mvn clean package -DskipTests
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------------< com.naufal:pengembalian >-----------------------
+[INFO] Building pengembalian 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.3.2:clean (default-clean) @ pengembalian ---
+[INFO] Deleting /home/pal/.jenkins/workspace/microservice-perpustakaan/pengembalian/target
+[INFO] 
+[INFO] --- git-commit-id:8.0.2:revision (default) @ pengembalian ---
+[INFO] dotGitDirectory '/home/pal/.jenkins/workspace/microservice-perpustakaan/.git'
+[INFO] Collected git.build.user.name with value Drenzzz
+[INFO] Collected git.build.user.email with value realdrenzzz@gmail.com
+[INFO] Using environment variable based branch name. GIT_BRANCH = origin/linux
+[INFO] Collected git.branch with value origin/linux
+[INFO] Collected git.commit.id.describe with value 850708b
+[INFO] Collected git.commit.id.describe-short with value 850708b
+[INFO] Collected git.commit.id with value 850708bf298abfc0cf5a24ec1599a9c9743d9c45
+[INFO] Collected git.commit.id.abbrev with value 850708b
+[INFO] Collected git.dirty with value false
+[INFO] Collected git.commit.user.name with value Drenzzz
+[INFO] Collected git.commit.user.email with value realdrenzzz@gmail.com
+[INFO] Collected git.commit.message.full with value fix jenkins syntax error
+[INFO] Collected git.commit.message.short with value fix jenkins syntax error
+[INFO] Collected git.commit.time with value 2026-01-19T22:38:33+07:00
+[INFO] Collected git.commit.author.time with value 2026-01-19T22:38:33+07:00
+[INFO] Collected git.commit.committer.time with value 2026-01-19T22:38:33+07:00
+[INFO] Collected git.remote.origin.url with value https://github.com/Drenzzz/microservice_perpustakaan
+[INFO] Collected git.tags with value 
+[INFO] Collected git.tag with value 
+[INFO] Collected git.closest.tag.name with value 
+[INFO] Collected git.closest.tag.commit.count with value 
+[INFO] Collected git.total.commit.count with value 24
+[INFO] Collected git.local.branch.ahead with value NO_REMOTE
+[INFO] Collected git.local.branch.behind with value NO_REMOTE
+[INFO] Collected git.build.time with value 2026-01-19T22:40:04+07:00
+[INFO] Collected git.build.version with value 0.0.1-SNAPSHOT
+[INFO] Collected git.build.host with value drenzzz
+[INFO] Collected git.build.number with value 14
+[INFO] including property 'git.tags' in results
+[INFO] including property 'git.build.version' in results
+[INFO] including property 'git.branch' in results
+[INFO] including property 'git.build.host' in results
+[INFO] including property 'git.build.number' in results
+[INFO] including property 'git.commit.id' in results
+[INFO] including property 'git.commit.user.email' in results
+[INFO] including property 'git.local.branch.behind' in results
+[INFO] including property 'git.commit.author.time' in results
+[INFO] including property 'git.build.user.name' in results
+[INFO] including property 'git.dirty' in results
+[INFO] including property 'git.closest.tag.commit.count' in results
+[INFO] including property 'git.commit.user.name' in results
+[INFO] including property 'git.commit.id.abbrev' in results
+[INFO] including property 'git.commit.id.describe-short' in results
+[INFO] including property 'git.total.commit.count' in results
+[INFO] including property 'git.commit.id.describe' in results
+[INFO] including property 'git.build.user.email' in results
+[INFO] including property 'git.commit.message.short' in results
+[INFO] including property 'git.commit.committer.time' in results
+[INFO] including property 'git.tag' in results
+[INFO] including property 'git.closest.tag.name' in results
+[INFO] including property 'git.local.branch.ahead' in results
+[INFO] including property 'git.commit.time' in results
+[INFO] including property 'git.build.time' in results
+[INFO] including property 'git.commit.message.full' in results
+[INFO] including property 'git.remote.origin.url' in results
+[INFO] Writing properties file [/home/pal/.jenkins/workspace/microservice-perpustakaan/pengembalian/target/classes/git.properties] (for project pengembalian)...
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ pengembalian ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ pengembalian ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 14 source files with javac [debug parameters release 21] to target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ pengembalian ---
+[INFO] Copying 1 resource from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ pengembalian ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 1 source file with javac [debug parameters release 21] to target/test-classes
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ pengembalian ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.4.2:jar (default-jar) @ pengembalian ---
+[INFO] Building jar: /home/pal/.jenkins/workspace/microservice-perpustakaan/pengembalian/target/pengembalian-0.0.1-SNAPSHOT.jar
+[INFO] 
+[INFO] --- spring-boot:3.3.5:repackage (repackage) @ pengembalian ---
+[INFO] Replacing main artifact /home/pal/.jenkins/workspace/microservice-perpustakaan/pengembalian/target/pengembalian-0.0.1-SNAPSHOT.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /home/pal/.jenkins/workspace/microservice-perpustakaan/pengembalian/target/pengembalian-0.0.1-SNAPSHOT.jar.original
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.344 s
+[INFO] Finished at: 2026-01-19T22:40:06+07:00
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Test Pengembalian Service)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] echo
+Testing Pengembalian Service...
+[Pipeline] dir
+Running in /home/pal/.jenkins/workspace/microservice-perpustakaan/pengembalian
+[Pipeline] {
+[Pipeline] sh
++ mvn test
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------------< com.naufal:pengembalian >-----------------------
+[INFO] Building pengembalian 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- git-commit-id:8.0.2:revision (default) @ pengembalian ---
+[INFO] dotGitDirectory '/home/pal/.jenkins/workspace/microservice-perpustakaan/.git'
+[INFO] Collected git.build.user.name with value Drenzzz
+[INFO] Collected git.build.user.email with value realdrenzzz@gmail.com
+[INFO] Using environment variable based branch name. GIT_BRANCH = origin/linux
+[INFO] Collected git.branch with value origin/linux
+[INFO] Collected git.commit.id.describe with value 850708b
+[INFO] Collected git.commit.id.describe-short with value 850708b
+[INFO] Collected git.commit.id with value 850708bf298abfc0cf5a24ec1599a9c9743d9c45
+[INFO] Collected git.commit.id.abbrev with value 850708b
+[INFO] Collected git.dirty with value false
+[INFO] Collected git.commit.user.name with value Drenzzz
+[INFO] Collected git.commit.user.email with value realdrenzzz@gmail.com
+[INFO] Collected git.commit.message.full with value fix jenkins syntax error
+[INFO] Collected git.commit.message.short with value fix jenkins syntax error
+[INFO] Collected git.commit.time with value 2026-01-19T22:38:33+07:00
+[INFO] Collected git.commit.author.time with value 2026-01-19T22:38:33+07:00
+[INFO] Collected git.commit.committer.time with value 2026-01-19T22:38:33+07:00
+[INFO] Collected git.remote.origin.url with value https://github.com/Drenzzz/microservice_perpustakaan
+[INFO] Collected git.tags with value 
+[INFO] Collected git.tag with value 
+[INFO] Collected git.closest.tag.name with value 
+[INFO] Collected git.closest.tag.commit.count with value 
+[INFO] Collected git.total.commit.count with value 24
+[INFO] Collected git.local.branch.ahead with value NO_REMOTE
+[INFO] Collected git.local.branch.behind with value NO_REMOTE
+[INFO] Collected git.build.time with value 2026-01-19T22:40:09+07:00
+[INFO] Collected git.build.version with value 0.0.1-SNAPSHOT
+[INFO] Collected git.build.host with value drenzzz
+[INFO] Collected git.build.number with value 14
+[INFO] including property 'git.tags' in results
+[INFO] including property 'git.build.version' in results
+[INFO] including property 'git.branch' in results
+[INFO] including property 'git.build.host' in results
+[INFO] including property 'git.build.number' in results
+[INFO] including property 'git.commit.id' in results
+[INFO] including property 'git.commit.user.email' in results
+[INFO] including property 'git.local.branch.behind' in results
+[INFO] including property 'git.commit.author.time' in results
+[INFO] including property 'git.build.user.name' in results
+[INFO] including property 'git.dirty' in results
+[INFO] including property 'git.closest.tag.commit.count' in results
+[INFO] including property 'git.commit.user.name' in results
+[INFO] including property 'git.commit.id.abbrev' in results
+[INFO] including property 'git.commit.id.describe-short' in results
+[INFO] including property 'git.total.commit.count' in results
+[INFO] including property 'git.commit.id.describe' in results
+[INFO] including property 'git.build.user.email' in results
+[INFO] including property 'git.commit.message.short' in results
+[INFO] including property 'git.commit.committer.time' in results
+[INFO] including property 'git.tag' in results
+[INFO] including property 'git.closest.tag.name' in results
+[INFO] including property 'git.local.branch.ahead' in results
+[INFO] including property 'git.commit.time' in results
+[INFO] including property 'git.build.time' in results
+[INFO] including property 'git.commit.message.full' in results
+[INFO] including property 'git.remote.origin.url' in results
+[INFO] Reading existing properties file [/home/pal/.jenkins/workspace/microservice-perpustakaan/pengembalian/target/classes/git.properties] (for project pengembalian)...
+[INFO] Properties file [/home/pal/.jenkins/workspace/microservice-perpustakaan/pengembalian/target/classes/git.properties] is up-to-date (for module pengembalian)...
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ pengembalian ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ pengembalian ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ pengembalian ---
+[INFO] Copying 1 resource from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ pengembalian ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ pengembalian ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.naufal.pengembalian.PengembalianApplicationTests
+22:40:10.117 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.naufal.pengembalian.PengembalianApplicationTests]: PengembalianApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+22:40:10.177 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.naufal.pengembalian.PengembalianApplication for test class com.naufal.pengembalian.PengembalianApplicationTests
+22:40:10.266 [main] INFO org.springframework.boot.devtools.restart.RestartApplicationListener -- Restart disabled due to context in which it is running
+22:40:11,469 |-INFO in ch.qos.logback.core.joran.util.ConfigurationWatchListUtil@516ebdf8 - Adding [jar:file:/home/pal/.m2/repository/org/springframework/boot/spring-boot/3.3.5/spring-boot-3.3.5.jar!/org/springframework/boot/logging/logback/defaults.xml] to configuration watch list.
+22:40:11,469 |-INFO in ConfigurationWatchList(mainURL=file:/home/pal/.jenkins/workspace/microservice-perpustakaan/pengembalian/target/classes/logback-spring.xml, fileWatchList={/home/pal/.jenkins/workspace/microservice-perpustakaan/pengembalian/target/classes/logback-spring.xml}, urlWatchList=[}) - Cannot watch [jar:file:/home/pal/.m2/repository/org/springframework/boot/spring-boot/3.3.5/spring-boot-3.3.5.jar!/org/springframework/boot/logging/logback/defaults.xml] as its protocol is not one of file, http or https.
+22:40:11,471 |-INFO in ch.qos.logback.core.model.processor.ConversionRuleModelHandler - registering conversion word applicationName with class [org.springframework.boot.logging.logback.ApplicationNameConverter]
+22:40:11,471 |-INFO in ch.qos.logback.core.model.processor.ConversionRuleModelHandler - registering conversion word clr with class [org.springframework.boot.logging.logback.ColorConverter]
+22:40:11,471 |-INFO in ch.qos.logback.core.model.processor.ConversionRuleModelHandler - registering conversion word correlationId with class [org.springframework.boot.logging.logback.CorrelationIdConverter]
+22:40:11,471 |-INFO in ch.qos.logback.core.model.processor.ConversionRuleModelHandler - registering conversion word wex with class [org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter]
+22:40:11,471 |-INFO in ch.qos.logback.core.model.processor.ConversionRuleModelHandler - registering conversion word wEx with class [org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter]
+22:40:11,472 |-INFO in ch.qos.logback.core.model.processor.ModelInterpretationContext@30feffc - value "%clr(%d{yyyy-MM-dd'T'HH:mm:ss.SSSXXX}){faint} %clr(%5p) %clr(87747){magenta} %clr(---){faint} %clr(%applicationName[%15.15t]){faint} %clr(%correlationId){faint}%clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%wEx" substituted for "${CONSOLE_LOG_PATTERN:-%clr(%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd'T'HH:mm:ss.SSSXXX}}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr(%applicationName[%15.15t]){faint} %clr(${LOG_CORRELATION_PATTERN:-}){faint}%clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"
+22:40:11,472 |-INFO in ch.qos.logback.core.model.processor.ModelInterpretationContext@30feffc - value "UTF-8" substituted for "${CONSOLE_LOG_CHARSET:-${file.encoding:-UTF-8}}"
+22:40:11,472 |-INFO in ch.qos.logback.core.model.processor.ModelInterpretationContext@30feffc - value "TRACE" substituted for "${CONSOLE_LOG_THRESHOLD:-TRACE}"
+22:40:11,472 |-INFO in ch.qos.logback.core.model.processor.ModelInterpretationContext@30feffc - value "%d{yyyy-MM-dd'T'HH:mm:ss.SSSXXX} %5p 87747 --- %applicationName[%t] %correlationId%-40.40logger{39} : %m%n%wEx" substituted for "${FILE_LOG_PATTERN:-%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd'T'HH:mm:ss.SSSXXX}} ${LOG_LEVEL_PATTERN:-%5p} ${PID:- } --- %applicationName[%t] ${LOG_CORRELATION_PATTERN:-}%-40.40logger{39} : %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"
+22:40:11,472 |-INFO in ch.qos.logback.core.model.processor.ModelInterpretationContext@30feffc - value "UTF-8" substituted for "${FILE_LOG_CHARSET:-${file.encoding:-UTF-8}}"
+22:40:11,472 |-INFO in ch.qos.logback.core.model.processor.ModelInterpretationContext@30feffc - value "TRACE" substituted for "${FILE_LOG_THRESHOLD:-TRACE}"
+22:40:11,474 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.apache.catalina.startup.DigesterFactory] to ERROR
+22:40:11,474 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@67207d8a - Propagating ERROR level on Logger[org.apache.catalina.startup.DigesterFactory] onto the JUL framework
+22:40:11,474 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.apache.catalina.util.LifecycleBase] to ERROR
+22:40:11,474 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@67207d8a - Propagating ERROR level on Logger[org.apache.catalina.util.LifecycleBase] onto the JUL framework
+22:40:11,474 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.apache.coyote.http11.Http11NioProtocol] to WARN
+22:40:11,474 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@67207d8a - Propagating WARN level on Logger[org.apache.coyote.http11.Http11NioProtocol] onto the JUL framework
+22:40:11,474 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.apache.sshd.common.util.SecurityUtils] to WARN
+22:40:11,474 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@67207d8a - Propagating WARN level on Logger[org.apache.sshd.common.util.SecurityUtils] onto the JUL framework
+22:40:11,474 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.apache.tomcat.util.net.NioSelectorPool] to WARN
+22:40:11,474 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@67207d8a - Propagating WARN level on Logger[org.apache.tomcat.util.net.NioSelectorPool] onto the JUL framework
+22:40:11,474 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.eclipse.jetty.util.component.AbstractLifeCycle] to ERROR
+22:40:11,474 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@67207d8a - Propagating ERROR level on Logger[org.eclipse.jetty.util.component.AbstractLifeCycle] onto the JUL framework
+22:40:11,474 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.hibernate.validator.internal.util.Version] to WARN
+22:40:11,474 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@67207d8a - Propagating WARN level on Logger[org.hibernate.validator.internal.util.Version] onto the JUL framework
+22:40:11,474 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.springframework.boot.actuate.endpoint.jmx] to WARN
+22:40:11,474 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@67207d8a - Propagating WARN level on Logger[org.springframework.boot.actuate.endpoint.jmx] onto the JUL framework
+22:40:11,474 |-WARN in ch.qos.logback.core.model.processor.AppenderModelHandler - Appender named [JSON_CONSOLE] not referenced. Skipping further processing.
+22:40:11,474 |-INFO in ch.qos.logback.core.model.processor.AppenderModelHandler - Processing appender named [CONSOLE]
+22:40:11,474 |-INFO in ch.qos.logback.core.model.processor.AppenderModelHandler - About to instantiate appender of type [ch.qos.logback.core.ConsoleAppender]
+22:40:11,476 |-INFO in ch.qos.logback.core.model.processor.ImplicitModelHandler - Assuming default type [ch.qos.logback.classic.encoder.PatternLayoutEncoder] for [encoder] property
+22:40:11,483 |-WARN in ch.qos.logback.core.model.processor.AppenderModelHandler - Appender named [LOGSTASH] not referenced. Skipping further processing.
+22:40:11,483 |-INFO in ch.qos.logback.classic.model.processor.RootLoggerModelHandler - Setting level of ROOT logger to INFO
+22:40:11,483 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@67207d8a - Propagating INFO level on Logger[ROOT] onto the JUL framework
+22:40:11,483 |-INFO in ch.qos.logback.core.model.processor.AppenderRefModelHandler - Attaching appender named [CONSOLE] to Logger[ROOT]
+22:40:11,483 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [com.naufal] to DEBUG
+22:40:11,483 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@67207d8a - Propagating DEBUG level on Logger[com.naufal] onto the JUL framework
+22:40:11,483 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.springframework] to WARN
+22:40:11,483 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@67207d8a - Propagating WARN level on Logger[org.springframework] onto the JUL framework
+22:40:11,483 |-INFO in ch.qos.logback.classic.model.processor.LoggerModelHandler - Setting level of logger [org.hibernate] to WARN
+22:40:11,483 |-INFO in ch.qos.logback.classic.jul.LevelChangePropagator@67207d8a - Propagating WARN level on Logger[org.hibernate] onto the JUL framework
+22:40:11,483 |-INFO in ch.qos.logback.core.model.processor.DefaultProcessor@bcb09a6 - End of configuration.
+22:40:11,483 |-INFO in org.springframework.boot.logging.logback.SpringBootJoranConfigurator@7c2a69b4 - Registering current configuration as safe fallback point
+
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.5)
+
+22:40:11.515 INFO  [,] c.n.p.PengembalianApplicationTests - Starting PengembalianApplicationTests using Java 21.0.9 with PID 87747 (started by pal in /home/pal/.jenkins/workspace/microservice-perpustakaan/pengembalian)
+22:40:11.516 DEBUG [,] c.n.p.PengembalianApplicationTests - Running with Spring Boot v3.3.5, Spring v6.1.14
+22:40:11.516 INFO  [,] c.n.p.PengembalianApplicationTests - No active profile set, falling back to 1 default profile: "default"
+22:40:12.570 WARN  [,] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+22:40:12.572 WARN  [,] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+22:40:12.895 INFO  [,] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+22:40:13.014 INFO  [,] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+22:40:13.015 INFO  [,] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+22:40:13.031 WARN  [,] org.hibernate.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+22:40:15.066 WARN  [,] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+22:40:15.790 WARN  [,] o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+22:40:15.837 INFO  [,] c.n.p.PengembalianApplicationTests - Started PengembalianApplicationTests in 5.578 seconds (process running for 6.173)
+WARNING: A Java agent has been loaded dynamically (/home/pal/.m2/repository/net/bytebuddy/byte-buddy-agent/1.14.19/byte-buddy-agent-1.14.19.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.217 s -- in com.naufal.pengembalian.PengembalianApplicationTests
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  8.386 s
+[INFO] Finished at: 2026-01-19T22:40:16+07:00
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] echo
+Deploying services...
+[Pipeline] sh
++ git log --oneline -n 5
+850708b fix jenkins syntax error
+8057f15 jenkins fix
+93f6a86 integrate automation to logging
+f2a960c Revert "log test"
+cbfa62a log test
+[Pipeline] sh
++ bash -c 'echo '\''{"service": "jenkins-pipeline", "message": "Deployment Started", "event": "deployment_start"}'\'' > /dev/tcp/localhost/5000'
+[Pipeline] sh
++ docker-compose down --remove-orphans
+ Network microservice-perpustakaan_microservices-network Removing 
+ Network microservice-perpustakaan_microservices-network Removed 
+[Pipeline] sh
++ docker-compose up -d --build --force-recreate
+ Image microservice-perpustakaan-api-gateway Building 
+ Image microservice-perpustakaan-anggota-service Building 
+ Image microservice-perpustakaan-pengembalian-service Building 
+ Image microservice-perpustakaan-buku-service Building 
+ Image microservice-perpustakaan-peminjaman-service Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 2.91kB done
+#1 DONE 0.0s
+
+#2 [peminjaman-service internal] load build definition from Dockerfile
+#2 transferring dockerfile: 578B done
+#2 DONE 0.2s
+
+#3 [pengembalian-service internal] load build definition from Dockerfile
+#3 transferring dockerfile: 315B done
+#3 DONE 0.1s
+
+#4 [anggota-service internal] load build definition from Dockerfile
+#4 transferring dockerfile: 315B done
+#4 ...
+
+#5 [buku-service internal] load build definition from Dockerfile
+#5 transferring dockerfile: 315B done
+#5 DONE 0.3s
+
+#6 [api-gateway internal] load build definition from Dockerfile
+#6 transferring dockerfile: 315B done
+#6 DONE 0.3s
+
+#4 [anggota-service internal] load build definition from Dockerfile
+#4 DONE 0.4s
+
+#7 [anggota-service internal] load metadata for docker.io/library/eclipse-temurin:21-jdk
+#7 ...
+
+#8 [pengembalian-service internal] load metadata for docker.io/library/maven:3.9.6-eclipse-temurin-21
+#8 DONE 2.8s
+
+#7 [buku-service internal] load metadata for docker.io/library/eclipse-temurin:21-jdk
+#7 DONE 3.0s
+
+#9 [peminjaman-service internal] load .dockerignore
+#9 transferring context: 2B done
+#9 ...
+
+#10 [buku-service internal] load .dockerignore
+#10 transferring context: 2B done
+#10 DONE 0.2s
+
+#11 [buku-service internal] load build context
+#11 DONE 0.0s
+
+#12 [pengembalian-service internal] load .dockerignore
+#12 transferring context: 2B done
+#12 DONE 0.2s
+
+#13 [anggota-service internal] load .dockerignore
+#13 transferring context: 2B done
+#13 DONE 0.3s
+
+#14 [pengembalian-service internal] load build context
+#14 DONE 0.0s
+
+#15 [anggota-service stage-1 1/3] FROM docker.io/library/eclipse-temurin:21-jdk@sha256:709602221b6a92c5cc7ecadfaf21bf1ae01f001186baf0a48bbf3dfa234f84ac
+#15 resolve docker.io/library/eclipse-temurin:21-jdk@sha256:709602221b6a92c5cc7ecadfaf21bf1ae01f001186baf0a48bbf3dfa234f84ac
+#15 ...
+
+#16 [anggota-service internal] load build context
+#16 DONE 0.0s
+
+#9 [peminjaman-service internal] load .dockerignore
+#9 DONE 0.4s
+
+#17 [api-gateway internal] load .dockerignore
+#17 transferring context: 2B done
+#17 DONE 0.5s
+
+#15 [peminjaman-service stage-1 1/3] FROM docker.io/library/eclipse-temurin:21-jdk@sha256:709602221b6a92c5cc7ecadfaf21bf1ae01f001186baf0a48bbf3dfa234f84ac
+#15 resolve docker.io/library/eclipse-temurin:21-jdk@sha256:709602221b6a92c5cc7ecadfaf21bf1ae01f001186baf0a48bbf3dfa234f84ac 0.3s done
+#15 DONE 0.4s
+
+#18 [buku-service build 1/5] FROM docker.io/library/maven:3.9.6-eclipse-temurin-21@sha256:8d63d4c1902cb12d9e79a70671b18ebe26358cb592561af33ca1808f00d935cb
+#18 resolve docker.io/library/maven:3.9.6-eclipse-temurin-21@sha256:8d63d4c1902cb12d9e79a70671b18ebe26358cb592561af33ca1808f00d935cb 0.3s done
+#18 DONE 0.3s
+
+#19 [api-gateway internal] load build context
+#19 transferring context: 712B done
+#19 DONE 0.2s
+
+#14 [pengembalian-service internal] load build context
+#14 transferring context: 2.43kB done
+#14 DONE 0.3s
+
+#16 [anggota-service internal] load build context
+#16 transferring context: 1.56kB done
+#16 DONE 0.2s
+
+#11 [buku-service internal] load build context
+#11 transferring context: 1.50kB done
+#11 DONE 0.3s
+
+#20 [peminjaman-service internal] load build context
+#20 transferring context: 81.55MB 0.3s done
+#20 DONE 0.5s
+
+#21 [api-gateway build 3/5] COPY pom.xml .
+#21 CACHED
+
+#22 [api-gateway build 4/5] COPY src ./src
+#22 CACHED
+
+#23 [api-gateway build 5/5] RUN mvn clean package -DskipTests
+#23 CACHED
+
+#24 [api-gateway stage-1 3/3] COPY --from=build /app/target/*.jar app.jar
+#24 CACHED
+
+#25 [peminjaman-service stage-1 2/3] WORKDIR /app
+#25 CACHED
+
+#26 [buku-service build 5/5] RUN mvn clean package -DskipTests
+#26 CACHED
+
+#27 [buku-service build 3/5] COPY pom.xml .
+#27 CACHED
+
+#28 [buku-service build 4/5] COPY src ./src
+#28 CACHED
+
+#29 [pengembalian-service build 4/5] COPY src ./src
+#29 CACHED
+
+#30 [pengembalian-service build 3/5] COPY pom.xml .
+#30 CACHED
+
+#31 [pengembalian-service build 5/5] RUN mvn clean package -DskipTests
+#31 CACHED
+
+#32 [buku-service stage-1 3/3] COPY --from=build /app/target/*.jar app.jar
+#32 CACHED
+
+#33 [pengembalian-service stage-1 3/3] COPY --from=build /app/target/*.jar app.jar
+#33 CACHED
+
+#34 [anggota-service build 3/5] COPY pom.xml .
+#34 CACHED
+
+#35 [anggota-service build 5/5] RUN mvn clean package -DskipTests
+#35 CACHED
+
+#36 [anggota-service build 4/5] COPY src ./src
+#36 CACHED
+
+#37 [anggota-service build 2/5] WORKDIR /app
+#37 CACHED
+
+#38 [anggota-service stage-1 3/3] COPY --from=build /app/target/*.jar app.jar
+#38 CACHED
+
+#39 [anggota-service] exporting to image
+#39 exporting layers done
+#39 exporting manifest sha256:483a845f06ec36d04ec49dcc18306c652a3151d24b73945d02814c166d0e7a7f 0.1s done
+#39 exporting config sha256:4505097047ea74382312c2f11fd68df7895fcd66ed219e7d1688e89a43692914
+#39 exporting config sha256:4505097047ea74382312c2f11fd68df7895fcd66ed219e7d1688e89a43692914 0.1s done
+#39 exporting attestation manifest sha256:e40d5b6741908528502ef1326cbca97849c378139ecfd72cb4f044151f322a17
+#39 ...
+
+#40 [peminjaman-service 3/3] COPY target/*.jar app.jar
+#40 DONE 0.8s
+
+#41 [peminjaman-service] exporting to image
+#41 ...
+
+#42 [api-gateway] exporting to image
+#42 exporting layers done
+#42 exporting manifest sha256:3a25ea489d082671400efb47390d9eb8b8f387ddb75937d797d2de665f9c0435 0.1s done
+#42 exporting config sha256:414e6a583c45b75381b5e2cf47e4f293b6178cb682132a40c85f214ec3f5aba4 0.1s done
+#42 exporting attestation manifest sha256:6021a91bb7a4c147e5ddf606b80ce156d762fba4586b65c5e6e92790c83b35c5 0.6s done
+#42 exporting manifest list sha256:c96f749f5a81c825fab39fd4e11a0922721326d3c79b83b93906c4a986559a7f 0.2s done
+#42 naming to docker.io/library/microservice-perpustakaan-api-gateway:latest 0.1s done
+#42 unpacking to docker.io/library/microservice-perpustakaan-api-gateway:latest 0.1s done
+#42 DONE 1.3s
+
+#43 [buku-service] exporting to image
+#43 exporting layers done
+#43 exporting manifest sha256:c4bf4b0d09564437ceaf1198d69eb3d755fdc93b2abe3c3aeb03d9e4b9692261 0.1s done
+#43 exporting config sha256:16ff5d7a5f3563ec31dd6e1f19b1f6000ad3cc351db93af8fa2b0e2a1c212122 0.1s done
+#43 exporting attestation manifest sha256:bcbadf463c5a36c1eba1dc9f869f500d1a29cc79c7bba7f1e5c7df7c7f32faf4 0.6s done
+#43 exporting manifest list sha256:31b5c222011806160455a07c38d40c9aeeb843b64f179c14547798c23d4f8f9a 0.2s done
+#43 naming to docker.io/library/microservice-perpustakaan-buku-service:latest 0.1s done
+#43 unpacking to docker.io/library/microservice-perpustakaan-buku-service:latest 0.1s done
+#43 DONE 1.3s
+
+#44 [pengembalian-service] exporting to image
+#44 exporting layers done
+#44 exporting manifest sha256:278f8e309c1fc4f7b11eac21bb43862dba796df3ac411b6d5dd375527510f7ab 0.1s done
+#44 exporting config sha256:7d165aacd0c7191b494b9345355cf1f50173957111dd94781734f27dc8832bf5 0.1s done
+#44 exporting attestation manifest sha256:9f7217cbf4df218bf6e41f5cbea777903cbe3d2ce5712b2b20237300e7e37ab8 0.6s done
+#44 exporting manifest list sha256:afddcf1c4bb08047402e45f991babd545aa57d719593856f3c6ab10228255dbe 0.2s done
+#44 naming to docker.io/library/microservice-perpustakaan-pengembalian-service:latest 0.1s done
+#44 unpacking to docker.io/library/microservice-perpustakaan-pengembalian-service:latest 0.1s done
+#44 DONE 1.3s
+
+#39 [anggota-service] exporting to image
+#39 exporting attestation manifest sha256:e40d5b6741908528502ef1326cbca97849c378139ecfd72cb4f044151f322a17 0.6s done
+#39 exporting manifest list sha256:d18725773d2e78ba16e37f6ca9060f7cf0dc1e2cc0c996230e450015b2d3d88d 0.2s done
+#39 naming to docker.io/library/microservice-perpustakaan-anggota-service:latest 0.1s done
+#39 unpacking to docker.io/library/microservice-perpustakaan-anggota-service:latest 0.0s done
+#39 DONE 1.3s
+
+#41 [peminjaman-service] exporting to image
+#41 ...
+
+#45 [buku-service] resolving provenance for metadata file
+#45 DONE 0.3s
+
+#46 [pengembalian-service] resolving provenance for metadata file
+#46 DONE 0.5s
+
+#47 [api-gateway] resolving provenance for metadata file
+#47 DONE 0.6s
+
+#48 [anggota-service] resolving provenance for metadata file
+#48 DONE 0.0s
+
+#41 [peminjaman-service] exporting to image
+#41 exporting layers 2.7s done
+#41 exporting manifest sha256:7e58a2d587b121aef3c0f1af391b6fb98a7c1ca45832b29bd11dd2ecf6665870 0.1s done
+#41 exporting config sha256:ffbdda5de516f56402ccaf96839f0c422837563c5aa7fad0769475cea291c956 0.1s done
+#41 exporting attestation manifest sha256:1828bfeb3ed925073b8d791d08fab9765ed2aa57f005820a7fb0c0e47652f2d4 0.1s done
+#41 exporting manifest list sha256:feae60ebe3f3de9749fbb996b9fe338c8551b44fa54e0d2320877d84d42ed963
+#41 exporting manifest list sha256:feae60ebe3f3de9749fbb996b9fe338c8551b44fa54e0d2320877d84d42ed963 0.1s done
+#41 naming to docker.io/library/microservice-perpustakaan-peminjaman-service:latest 0.0s done
+#41 unpacking to docker.io/library/microservice-perpustakaan-peminjaman-service:latest
+#41 unpacking to docker.io/library/microservice-perpustakaan-peminjaman-service:latest 0.4s done
+#41 DONE 3.4s
+
+#49 [peminjaman-service] resolving provenance for metadata file
+#49 DONE 0.0s
+ Image microservice-perpustakaan-buku-service Built 
+ Image microservice-perpustakaan-peminjaman-service Built 
+ Image microservice-perpustakaan-pengembalian-service Built 
+ Image microservice-perpustakaan-api-gateway Built 
+ Image microservice-perpustakaan-anggota-service Built 
+ Network microservice-perpustakaan_microservices-network Creating 
+ Network microservice-perpustakaan_microservices-network Created 
+ Container prometheus Creating 
+ Container elasticsearch Creating 
+ Container server-eureka Creating 
+ Container rabbitmq Creating 
+ Container server-eureka Error response from daemon: Conflict. The container name "/server-eureka" is already in use by container "3bbc766fa8d45ba79e2d2440759ff7ab257a25b38156ccd37ea3fa8f624ea202". You have to remove (or rename) that container to be able to reuse that name. 
+Error response from daemon: Conflict. The container name "/server-eureka" is already in use by container "3bbc766fa8d45ba79e2d2440759ff7ab257a25b38156ccd37ea3fa8f624ea202". You have to remove (or rename) that container to be able to reuse that name.
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] echo
+Pipeline completed.
+[Pipeline] echo
+❌ Build or test failed!
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+ERROR: script returned exit code 1
+Finished: FAILURE
