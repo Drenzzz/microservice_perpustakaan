@@ -1,0 +1,95 @@
+{
+    "annotations": {
+        "list": [
+            {
+                "builtIn": 1,
+                "datasource": "-- Grafana --",
+                "enable": true,
+                "hide": true,
+                "iconColor": "rgba(0, 211, 255, 1)",
+                "name": "Annotations & Alerts",
+                "type": "dashboard"
+            }
+        ]
+    },
+    "editable": true,
+    "gnetId": 19004,
+    "graphTooltip": 0,
+    "id": null,
+    "links": [],
+    "panels": [
+        {
+            "datasource": "Prometheus",
+            "fieldConfig": {
+                "defaults": {
+                    "unit": "reqps"
+                }
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 24,
+                "x": 0,
+                "y": 0
+            },
+            "id": 1,
+            "targets": [
+                {
+                    "expr": "rate(http_server_requests_seconds_count{application=~\"$application\"}[1m])",
+                    "legendFormat": "{{application}} - {{uri}}"
+                }
+            ],
+            "title": "HTTP Throughput",
+            "type": "timeseries"
+        },
+        {
+            "datasource": "Prometheus",
+            "fieldConfig": {
+                "defaults": {
+                    "unit": "s"
+                }
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 24,
+                "x": 0,
+                "y": 8
+            },
+            "id": 2,
+            "targets": [
+                {
+                    "expr": "histogram_quantile(0.95, sum(rate(http_server_requests_seconds_bucket{application=~\"$application\"}[1m])) by (le, application, uri))",
+                    "legendFormat": "{{application}} - {{uri}}"
+                }
+            ],
+            "title": "Response Time (P95)",
+            "type": "timeseries"
+        }
+    ],
+    "refresh": "10s",
+    "schemaVersion": 27,
+    "style": "dark",
+    "tags": [
+        "spring-boot-3"
+    ],
+    "templating": {
+        "list": [
+            {
+                "allValue": ".*",
+                "includeAll": true,
+                "multi": true,
+                "name": "application",
+                "query": "label_values(up, application)",
+                "refresh": 1,
+                "type": "query",
+                "datasource": "Prometheus"
+            }
+        ]
+    },
+    "time": {
+        "from": "now-1h",
+        "to": "now"
+    },
+    "title": "Spring Boot 3 (Compact)",
+    "uid": "sb3-compact",
+    "version": 1
+}
