@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.util.UUID;
 
 import org.slf4j.MDC;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.info.GitProperties;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -39,6 +41,9 @@ public class LoggingFilter extends OncePerRequestFilter {
     @Value("${spring.application.name:unknown}")
     private String serviceName;
 
+    @Autowired(required = false)
+    private GitProperties gitProperties;
+
     @Override
     protected void doFilterInternal(HttpServletRequest request,
             HttpServletResponse response,
@@ -52,6 +57,9 @@ public class LoggingFilter extends OncePerRequestFilter {
 
         // Set MDC values for structured logging
         MDC.put(CORRELATION_ID_KEY, correlationId);
+        if (gitProperties != null) {
+            MDC.put("version", gitProperties.getShortCommitId());
+        }
         MDC.put(SERVICE_NAME_KEY, serviceName);
         MDC.put(REQUEST_URI_KEY, request.getRequestURI());
         MDC.put(HTTP_METHOD_KEY, request.getMethod());

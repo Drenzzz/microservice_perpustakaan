@@ -89,6 +89,24 @@ pipeline {
                 }
             }
         }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying services...'
+                
+                // Show recent changes
+                sh 'git log --oneline -n 5'
+                
+                // Notify Logstash - Deployment Start
+                sh 'echo \'{"service": "jenkins-pipeline", "message": "Deployment Started", "event": "deployment_start"}\' | nc -w 1 localhost 5000 || true'
+                
+                // Deploy using Docker Compose
+                sh 'docker-compose up -d --build'
+                
+                // Notify Logstash - Deployment Finish
+                sh 'echo \'{"service": "jenkins-pipeline", "message": "Deployment Finished", "event": "deployment_finish"}\' | nc -w 1 localhost 5000 || true'
+            }
+        }
     }
     
     post {
