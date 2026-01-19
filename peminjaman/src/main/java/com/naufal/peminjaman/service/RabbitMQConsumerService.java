@@ -7,7 +7,7 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.naufal.peminjaman.dto.PeminjamanEventDTO;
+import com.naufal.peminjaman.dto.PeminjamanEventDTO
 
 import static net.logstash.logback.argument.StructuredArguments.kv;
 
