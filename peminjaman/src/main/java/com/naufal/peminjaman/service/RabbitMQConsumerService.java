@@ -7,7 +7,7 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.naufal.peminjaman.dto.PeminjamanEventDTO
+import com.naufal.peminjaman.dto.PeminjamanEventDTO;
 
 import static net.logstash.logback.argument.StructuredArguments.kv;
 
@@ -49,7 +49,7 @@ public class RabbitMQConsumerService {
             } else {
                 log.warn("Unknown event type received", kv("eventType", eventType));
             }
-            
+
             log.info("Event processed successfully",
                     kv("eventType", eventType),
                     kv("status", "SUCCESS"));
@@ -65,15 +65,17 @@ public class RabbitMQConsumerService {
 
     private void handlePeminjamanCreated(java.util.Map<String, Object> payload) {
         log.info("Handling PEMINJAMAN_CREATED event", kv("action", "SEND_EMAIL"));
-        // Manual mapping from Map to DTO Structure if needed, or just extract what we need
+        // Manual mapping from Map to DTO Structure if needed, or just extract what we
+        // need
         // Here we just mimic the old logic assuming 'data' exists
         try {
-            Object dataFn = payload.get("data"); 
-            // Simplified: Not implementing full email logic to avoid complexity with Map conversion
+            Object dataFn = payload.get("data");
+            // Simplified: Not implementing full email logic to avoid complexity with Map
+            // conversion
             // In real app, we would use ObjectMapper.convertValue
             log.info("Email notification would be sent here for data: {}", dataFn);
         } catch (Exception e) {
-             log.warn("Skipping email notification - error parsing data");
+            log.warn("Skipping email notification - error parsing data");
         }
     }
 
