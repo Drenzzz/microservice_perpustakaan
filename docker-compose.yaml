@@ -1,4 +1,4 @@
-#version: '3.8'
+version: '3.8'
 
 services:
   # Service Discovery - Eureka Server
@@ -12,7 +12,7 @@ services:
     networks:
       - microservices-network
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8761"]
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:8761"]
       interval: 30s
       timeout: 10s
       retries: 3
@@ -33,7 +33,7 @@ services:
       test: ["CMD", "rabbitmq-diagnostics", "check_port_connectivity"]
       interval: 30s
       timeout: 10s
-      retries: 3
+      retries: 5
 
   # Service anggota dengan H2 Database
   anggota-service:
@@ -68,8 +68,10 @@ services:
     volumes:
       - anggota_data:/data
     depends_on:
-      - server-eureka
-      - rabbitmq
+      server-eureka:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
     networks:
       - microservices-network
     healthcheck:
@@ -111,8 +113,10 @@ services:
     volumes:
       - buku_data:/data
     depends_on:
-      - server-eureka
-      - rabbitmq
+      server-eureka:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
     networks:
       - microservices-network
     healthcheck:
@@ -157,10 +161,14 @@ services:
     volumes:
       - peminjaman_data:/data
     depends_on:
-      - server-eureka
-      - rabbitmq
-      - anggota-service
-      - buku-service
+      server-eureka:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+      anggota-service:
+        condition: service_healthy
+      buku-service:
+        condition: service_healthy
     networks:
       - microservices-network
     healthcheck:
@@ -206,10 +214,16 @@ services:
     volumes:
       - pengembalian_data:/data
     depends_on:
-      - server-eureka
-      - rabbitmq
-      - anggota-service
-      - buku-service
+      server-eureka:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+      anggota-service:
+        condition: service_healthy
+      buku-service:
+        condition: service_healthy
+      peminjaman-service:
+        condition: service_healthy
     networks:
       - microservices-network
     healthcheck:
@@ -229,13 +243,15 @@ services:
       EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://server-eureka:8761/eureka/
       SERVER_PORT: 9000
     depends_on:
-      - server-eureka
-      - anggota-service
-      - buku-service
-      - peminjaman-service
-      - pengembalian-service
+      server-eureka:
+        condition: service_healthy
     networks:
       - microservices-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
   # Monitoring Stack
   prometheus:
@@ -248,6 +264,11 @@ services:
       - "9091:9090"
     networks:
       - microservices-network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:9090/-/healthy"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
   grafana:
     image: grafana/grafana:latest
@@ -256,12 +277,20 @@ services:
       - "3000:3000"
     volumes:
       - grafana_data:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=admin
     depends_on:
-      - prometheus
+      prometheus:
+         condition: service_healthy
     networks:
       - microservices-network
+    healthcheck:
+      test: ["CMD-SHELL", "wget --quiet --tries=1 --spider http://localhost:3000/api/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
   # ELK Stack
   elasticsearch:
@@ -277,6 +306,11 @@ services:
       - elasticsearch_data:/usr/share/elasticsearch/data
     networks:
       - microservices-network
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:9200/_cluster/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
 
   logstash:
     image: docker.elastic.co/logstash/logstash:7.17.10
@@ -287,9 +321,15 @@ services:
     volumes:
       - ./logstash/pipeline:/usr/share/logstash/pipeline
     depends_on:
-      - elasticsearch
+      elasticsearch:
+        condition: service_healthy
     networks:
       - microservices-network
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:9600/_node/stats || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
 
   kibana:
     image: docker.elastic.co/kibana/kibana:7.17.10
@@ -300,9 +340,15 @@ services:
       ELASTICSEARCH_URL: http://elasticsearch:9200
       ELASTICSEARCH_HOSTS: '["http://elasticsearch:9200"]'
     depends_on:
-      - elasticsearch
+      elasticsearch:
+        condition: service_healthy
     networks:
       - microservices-network
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5601/api/status || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
 
 volumes:
   anggota_data:

@@ -25,21 +25,33 @@
         </encoder>
     </appender>
 
-    <!-- Logstash TCP Appender -->
-    <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-        <destination>logstash:5000</destination>
+    <!-- Logstash TCP Appender for ELK Stack -->
+    <appender name="LOGSTASH_TCP" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <destination>${LOGSTASH_HOST:-localhost}:${LOGSTASH_PORT:-5000}</destination>
+        
+        <!-- Encoder configuration -->
         <encoder class="net.logstash.logback.encoder.LogstashEncoder">
-             <includeMdcKeyName>correlationId</includeMdcKeyName>
-             <includeMdcKeyName>serviceName</includeMdcKeyName>
-             <customFields>{"service":"${serviceName}"}</customFields>
+            <includeMdcKeyName>correlationId</includeMdcKeyName>
+            <includeMdcKeyName>serviceName</includeMdcKeyName>
+            <includeMdcKeyName>requestUri</includeMdcKeyName>
+            <includeMdcKeyName>httpMethod</includeMdcKeyName>
+            <includeMdcKeyName>traceId</includeMdcKeyName>
+            <includeMdcKeyName>spanId</includeMdcKeyName>
+            <customFields>{"service":"${serviceName}"}</customFields>
+            <timestampPattern>yyyy-MM-dd'T'HH:mm:ss.SSSZ</timestampPattern>
         </encoder>
+        
+        <!-- Connection configuration -->
+        <keepAliveDuration>5 minutes</keepAliveDuration>
+        <reconnectionDelay>10 seconds</reconnectionDelay>
+        <writeTimeout>30 seconds</writeTimeout>
     </appender>
 
-    <!-- Profile: ELK / Production - JSON output -->
-    <springProfile name="elk,production">
+    <!-- Profile: ELK / Production / Docker - JSON output + Logstash -->
+    <springProfile name="elk,production,docker">
         <root level="INFO">
             <appender-ref ref="JSON_CONSOLE"/>
-            <appender-ref ref="LOGSTASH"/>
+            <appender-ref ref="LOGSTASH_TCP"/>
         </root>
         <logger name="com.naufal" level="DEBUG"/>
     </springProfile>

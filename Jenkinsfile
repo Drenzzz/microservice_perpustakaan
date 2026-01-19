@@ -94,9 +94,17 @@ pipeline {
             steps {
                 echo 'Deploying services...'
                 
-                // Notify Logstash - Deployment Start
+                // Notify Logstash - Deployment Start (with Git Commit Info)
                 sh(script: '''
-                    bash -c "echo '{\\"service\\": \\"jenkins-pipeline\\", \\"message\\": \\"Deployment Started\\", \\"event\\": \\"deployment_start\\"}' > /dev/tcp/localhost/5000" || true
+                    COMMIT_ID=$(git log -1 --pretty=format:'%h')
+                    COMMIT_MSG=$(git log -1 --pretty=format:'%s')
+                    COMMIT_AUTHOR=$(git log -1 --pretty=format:'%an')
+                    
+                    # Escape quotes in commit message to avoid JSON errors
+                    COMMIT_MSG=$(echo "$COMMIT_MSG" | sed 's/"/\\\\"/g')
+                    
+                    # Send JSON payload to Logstash
+                    bash -c "echo '{\\"service\\": \\"jenkins-pipeline\\", \\"message\\": \\"Deployment Started\\", \\"event\\": \\"deployment_start\\", \\"commit_id\\": \\"$COMMIT_ID\\", \\"commit_message\\": \\"$COMMIT_MSG\\", \\"commit_author\\": \\"$COMMIT_AUTHOR\\"}' > /dev/tcp/localhost/5000" || true
                 ''', returnStatus: true)
                 
                 // Cleanup existing containers explicitly to avoid conflicts
@@ -110,7 +118,9 @@ pipeline {
                 
                 // Notify Logstash - Deployment Finish
                 sh(script: '''
-                    bash -c "echo '{\\"service\\": \\"jenkins-pipeline\\", \\"message\\": \\"Deployment Finished\\", \\"event\\": \\"deployment_finish\\"}' > /dev/tcp/localhost/5000" || true
+                    COMMIT_ID=$(git log -1 --pretty=format:'%h')
+                    
+                    bash -c "echo '{\\"service\\": \\"jenkins-pipeline\\", \\"message\\": \\"Deployment Finished\\", \\"event\\": \\"deployment_finish\\", \\"commit_id\\": \\"$COMMIT_ID\\"}' > /dev/tcp/localhost/5000" || true
                 ''', returnStatus: true)
             }
         }
