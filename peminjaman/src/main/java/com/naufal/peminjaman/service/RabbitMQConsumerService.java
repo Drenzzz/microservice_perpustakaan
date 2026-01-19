@@ -50,7 +50,7 @@ public class RabbitMQConsumerService {
                 log.warn("Unknown event type received", kv("eventType", eventType));
             }
 
-            log.info("Event processed successfully working",
+            log.info("Event processed successfully",
                     kv("eventType", eventType),
                     kv("status", "SUCCESS"));
         } catch (Exception e) {
