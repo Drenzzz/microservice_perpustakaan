@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: peminjaman-service
+  labels:
+    app: peminjaman-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: peminjaman-service
+  template:
+    metadata:
+      labels:
+        app: peminjaman-service
+    spec:
+      containers:
+        - name: peminjaman-service
+          image: peminjaman-service:latest
+          imagePullPolicy: Never # Use local image (built by docker build)
+          ports:
+            - containerPort: 8083
+          envFrom:
+            - configMapRef:
+                name: microservices-config
+          env:
+            - name: SERVER_PORT
+              value: "8083"
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:h2:mem:peminjaman;DB_CLOSE_ON_EXIT=FALSE"
+            - name: ANGGOTA_SERVICE_URL
+              value: "http://anggota-service:8081"
+            - name: BUKU_SERVICE_URL
+              value: "http://buku-service:8082"
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8083
+            initialDelaySeconds: 60
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8083
+            initialDelaySeconds: 90
+            periodSeconds: 30
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: peminjaman-service
+  labels:
+    app: peminjaman-service
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8083
+      targetPort: 8083
+  selector:
+    app: peminjaman-service
