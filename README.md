@@ -150,3 +150,5 @@ Semua request dari klien (Postman/Frontend) harus diarahkan melalui **API Gatewa
 - **Kembalikan Buku**: `POST /api/pengembalian`
   - _Payload mencakup ID Peminjaman._
   - _Sistem akan otomatis menghitung denda jika terlambat._
+
+<- Add jenkins.war Jenkins Automation Test Trigger -->
