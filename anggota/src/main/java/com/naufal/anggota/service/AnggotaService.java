@@ -10,8 +10,10 @@ import com.naufal.anggota.repository.AnggotaRepository;
 
 @Service
 public class AnggotaService {
-    @Autowired
 
+    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(AnggotaService.class);
+
+    @Autowired
     private AnggotaRepository anggotaRepository;
 
     public List<AnggotaModel> getAllAnggota() {
@@ -24,7 +26,7 @@ public class AnggotaService {
     }
 
     public AnggotaModel createAnggota(AnggotaModel anggota) {
-        System.out.println("berhasil entri anggota lagi");
+        log.info("berhasil entri anggota lagi");
         return anggotaRepository.save(anggota);
     }
 
