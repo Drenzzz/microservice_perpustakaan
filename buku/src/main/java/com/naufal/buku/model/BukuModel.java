@@ -15,5 +15,5 @@ public class BukuModel {
     private String judul;
     private String pengarang;
     private String penerbit;
-    private Integer tahun_terbit; //only years allowed here
+    private Integer tahun_terbit; //hanya tahun yg diperbolehkan
 }
