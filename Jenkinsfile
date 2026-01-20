@@ -111,7 +111,7 @@ pipeline {
                 sh(script: 'docker-compose down --remove-orphans', returnStatus: true)
                 
                 // Force remove common containers if they still exist (handling the Conflict error)
-                sh(script: 'docker rm -f server-eureka api-gateway anggota-service buku-service peminjaman-service pengembalian-service || true', returnStatus: true)
+                sh(script: 'docker rm -f server-eureka rabbitmq buku-service anggota-service peminjaman-service pengembalian-service api-gateway prometheus grafana elasticsearch logstash kibana || true', returnStatus: true)
                 
                 // Deploy
                 sh 'docker-compose up -d --build --force-recreate'
