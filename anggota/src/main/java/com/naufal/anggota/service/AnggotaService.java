@@ -24,7 +24,7 @@ public class AnggotaService {
     }
 
     public AnggotaModel createAnggota(AnggotaModel anggota) {
-        System.out.println("berhasil entri anggota");
+        System.out.println("berhasil entri anggota lagi");
         return anggotaRepository.save(anggota);
     }
 
