@@ -26,7 +26,7 @@ public class AnggotaService {
     }
 
     public AnggotaModel createAnggota(AnggotaModel anggota) {
-        log.info("berhasil entri anggota lagi");
+        log.info("berhasil entri anggota lagi kesekian kalinya");
         return anggotaRepository.save(anggota);
     }
 
