@@ -65,6 +65,7 @@ services:
       SPRING_JPA_SHOW_SQL: "true"
 
       SERVER_PORT: 8081
+      LOGSTASH_HOST: logstash
     volumes:
       - anggota_data:/data
     depends_on:
@@ -110,6 +111,7 @@ services:
       SPRING_JPA_SHOW_SQL: "true"
 
       SERVER_PORT: 8082
+      LOGSTASH_HOST: logstash
     volumes:
       - buku_data:/data
     depends_on:
@@ -158,6 +160,7 @@ services:
       ANGGOTA_SERVICE_URL: http://anggota-service:8081
       BUKU_SERVICE_URL: http://buku-service:8082
       SERVER_PORT: 8083
+      LOGSTASH_HOST: logstash
     volumes:
       - peminjaman_data:/data
     depends_on:
@@ -211,6 +214,7 @@ services:
       BUKU_SERVICE_URL: http://buku-service:8082
       PEMINJAMAN_SERVICE_URL: http://peminjaman-service:8083
       SERVER_PORT: 8084
+      LOGSTASH_HOST: logstash
     volumes:
       - pengembalian_data:/data
     depends_on:
@@ -242,6 +246,7 @@ services:
       SPRING_PROFILES_ACTIVE: docker
       EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://server-eureka:8761/eureka/
       SERVER_PORT: 9000
+      LOGSTASH_HOST: logstash
     depends_on:
       server-eureka:
         condition: service_healthy
