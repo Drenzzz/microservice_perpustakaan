@@ -15,6 +15,8 @@ pipeline {
             steps {
                 echo 'Cloning repository...'
                 checkout scm
+                // Show git commit details and diff for logging purposes
+                sh 'git show'
             }
         }
         
